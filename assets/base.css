@@ -102,10 +102,6 @@ body:has(.section-header .drawer-menu) .announcement-bar-section .page-width {
 }
 
 @media screen and (min-width: 750px) {
-  .page-width {
-    padding: 0 5rem;
-  }
-
   .header.page-width,
   .utility-bar__grid.page-width {
     padding-left: 3.2rem;
@@ -906,8 +902,8 @@ summary::-webkit-details-marker {
 }
 
 .grid__item {
-  width: calc(25% - var(--grid-mobile-horizontal-spacing) * 3 / 4);
-  max-width: calc(50% - var(--grid-mobile-horizontal-spacing) / 2);
+  width: 50%;
+  max-width: 50%;
   flex-grow: 1;
   flex-shrink: 0;
 }

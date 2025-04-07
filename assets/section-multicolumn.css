@@ -199,8 +199,7 @@
 
 @media screen and (min-width: 750px) {
   .background-none .multicolumn-card__image-wrapper {
-    margin-left: 1.5rem;
-    margin-right: 1.5rem;
+    margin: 0 auto;
   }
 
   .background-none .multicolumn-list .multicolumn-card__info,
