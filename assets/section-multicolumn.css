@@ -248,3 +248,46 @@
     display: list-item;
   }
 }
+
+.card-style {
+  position: relative;
+  overflow: hidden;
+  height: 100%;
+  display: block;
+}
+
+.card-style-image-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.card-style-info {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  padding: 1.5rem;
+  text-align: left;
+  color: rgb(var(--color-background));
+  width: 100%;
+  z-index: 1;
+}
+
+.card-style .card-style-info h3,
+.card-style .card-style-info .rte {
+  color: rgb(var(--color-background));
+}
+
+.card-style-link {
+  cursor: pointer;
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  height: 100%;
+}
+
+.card-style-link-label {
+  margin-top: 1.5rem;
+  font-weight: 500;
+  color: rgb(var(--color-background));
+}

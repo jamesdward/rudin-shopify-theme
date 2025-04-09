@@ -46,7 +46,7 @@
       "settings": {
         "image": "shopify://shop_images/amsterdam-city-archives-I5UuPHNQDNs-unsplash.jpg",
         "image_overlay_opacity": 0,
-        "image_height": "large",
+        "image_height": "adapt",
         "desktop_content_position": "bottom-left",
         "show_text_box": false,
         "desktop_content_alignment": "left",
@@ -87,20 +87,20 @@
           "type": "column",
           "settings": {
             "image": "shopify://shop_images/image_18.png",
-            "title": "Shop Empyrean",
+            "title": "",
             "text": "",
-            "link_label": "",
-            "link": ""
+            "link_label": "Shop Empyrean",
+            "link": "shopify://collections/empyrean"
           }
         },
         "column_pmBRJg": {
           "type": "column",
           "settings": {
             "image": "shopify://shop_images/amsterdam-city-archives-I5UuPHNQDNs-unsplash.jpg",
-            "title": "Shop all",
+            "title": "",
             "text": "",
-            "link_label": "",
-            "link": ""
+            "link_label": "Shop all",
+            "link": "shopify://collections/all"
           }
         }
       },
@@ -122,7 +122,8 @@
         "columns_mobile": "1",
         "swipe_on_mobile": false,
         "padding_top": 36,
-        "padding_bottom": 0
+        "padding_bottom": 0,
+        "card_style": true
       }
     },
     "featured_collection_mgi8i8": {
@@ -213,7 +214,8 @@
         "columns_mobile": "1",
         "swipe_on_mobile": false,
         "padding_top": 44,
-        "padding_bottom": 44
+        "padding_bottom": 44,
+        "card_style": false
       }
     },
     "rich_text_rhPQEp": {
