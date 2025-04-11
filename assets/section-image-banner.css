@@ -499,3 +499,7 @@
     color: currentColor;
   }
 }
+
+.banner--full {
+  height: calc(100vh - 160px);
+}

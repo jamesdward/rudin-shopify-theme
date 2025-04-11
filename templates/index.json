@@ -46,7 +46,7 @@
       "settings": {
         "image": "shopify://shop_images/amsterdam-city-archives-I5UuPHNQDNs-unsplash.jpg",
         "image_overlay_opacity": 0,
-        "image_height": "adapt",
+        "image_height": "full",
         "desktop_content_position": "bottom-left",
         "show_text_box": false,
         "desktop_content_alignment": "left",
@@ -63,8 +63,8 @@
         "heading": {
           "type": "heading",
           "settings": {
-            "heading": "Artisans of Carbon, est. MMXXV",
-            "heading_size": "h1"
+            "heading": "RUDIN CREATES<em> limited</em> edition LUXURY AND FINE JEWELRY, <em>where </em>EACH JEWEL <em>is a </em>CHARACTER <em>with its </em>own DESIGN STORY.",
+            "heading_size": "h2"
           }
         }
       },
@@ -129,13 +129,13 @@
     "featured_collection_mgi8i8": {
       "type": "featured-collection",
       "settings": {
-        "title": "",
-        "heading_size": "h2",
+        "title": "CURATED <em>by </em>our MASTER STORYTELLER",
+        "heading_size": "h1",
         "description": "",
         "show_description": false,
         "description_style": "body",
         "collection": "all",
-        "products_to_show": 8,
+        "products_to_show": 4,
         "columns_desktop": 4,
         "full_width": true,
         "show_view_all": false,
@@ -157,95 +157,55 @@
     "multicolumn_AW4Yeq": {
       "type": "multicolumn",
       "blocks": {
-        "column_e3pK7X": {
-          "type": "column",
-          "settings": {
-            "title": "Free shipping",
-            "text": "<p>This is the brand value introduction text</p>",
-            "link_label": "Learn more",
-            "link": ""
-          }
-        },
         "column_gX7jJB": {
           "type": "column",
           "settings": {
-            "title": "Climate neutral",
-            "text": "<p>This is the brand value introduction text</p>",
-            "link_label": "Learn more",
+            "title": "HIGH JEWELRY CRAFTSMANSHIP",
+            "text": "<p>Handcrafted in our Valenza, Italy atelier, the cradle of high jewelry</p>",
+            "link_label": "",
             "link": ""
           }
         },
         "column_HRwL88": {
           "type": "column",
           "settings": {
-            "title": "Plastic free packaging",
-            "text": "<p>This is the brand value introduction text</p>",
-            "link_label": "Learn more",
+            "title": "COMMITTED TO SUSTAINABILITY",
+            "text": "<p>Solid recycled 14k gold and climate-neutral lab grown diamonds</p>",
+            "link_label": "",
             "link": ""
           }
         },
-        "column_XEWKCP": {
+        "column_e3pK7X": {
           "type": "column",
           "settings": {
-            "title": "Secure payment",
-            "text": "<p>This is the brand value introduction text</p>",
-            "link_label": "Learn more",
+            "title": "FREE DELIVERY & RETURNS",
+            "text": "<p>Complimentary insured shipping and returns on all orders worldwide</p>",
+            "link_label": "",
             "link": ""
           }
         }
       },
       "block_order": [
-        "column_e3pK7X",
         "column_gX7jJB",
         "column_HRwL88",
-        "column_XEWKCP"
+        "column_e3pK7X"
       ],
       "settings": {
         "title": "",
         "heading_size": "h1",
         "image_width": "full",
         "image_ratio": "adapt",
-        "columns_desktop": 4,
-        "column_alignment": "left",
+        "columns_desktop": 3,
+        "column_alignment": "center",
         "background_style": "none",
         "button_label": "",
         "button_link": "",
-        "color_scheme": "scheme-3",
+        "color_scheme": "scheme-4",
         "columns_mobile": "1",
         "swipe_on_mobile": false,
         "padding_top": 44,
         "padding_bottom": 44,
         "card_style": false
-      }
-    },
-    "rich_text_rhPQEp": {
-      "type": "rich-text",
-      "blocks": {
-        "heading_xgBMm9": {
-          "type": "heading",
-          "settings": {
-            "heading": "About Rudin",
-            "heading_size": "h2"
-          }
-        },
-        "text_YRAC67": {
-          "type": "text",
-          "settings": {
-            "text": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>"
-          }
-        }
-      },
-      "block_order": [
-        "heading_xgBMm9",
-        "text_YRAC67"
-      ],
-      "settings": {
-        "desktop_content_position": "center",
-        "content_alignment": "center",
-        "color_scheme": "",
-        "full_width": true,
-        "padding_top": 40,
-        "padding_bottom": 52
       }
     }
   },
@@ -254,7 +214,6 @@
     "rich_text",
     "multicolumn_jDKNRL",
     "featured_collection_mgi8i8",
-    "multicolumn_AW4Yeq",
-    "rich_text_rhPQEp"
+    "multicolumn_AW4Yeq"
   ]
 }
