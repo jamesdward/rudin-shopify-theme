@@ -87,8 +87,25 @@
   padding: 0;
 }
 
+.multicolumn-list__item {
+  max-width: var(--column-max-width, none);
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+}
+
+.multicolumn-list__item .multicolumn-card {
+  max-width: var(--column-max-width, none);
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .multicolumn-list__item:only-child {
-  max-width: 72rem;
+  max-width: min(var(--column-max-width, 72rem), 72rem);
+}
+
+.multicolumn-list__item:only-child .multicolumn-card {
+  max-width: min(var(--column-max-width, 72rem), 72rem);
 }
 
 .multicolumn-list__item--empty {
