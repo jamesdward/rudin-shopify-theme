@@ -12,15 +12,9 @@
     "main": {
       "type": "main-product",
       "blocks": {
-        "vendor": {
-          "type": "text",
-          "settings": {
-            "text": "{{ product.vendor }}",
-            "text_style": "uppercase"
-          }
-        },
         "title": {
           "type": "title",
+          "name": "CUPID & PSYCHE ",
           "settings": {}
         },
         "caption": {
@@ -54,13 +48,14 @@
         },
         "description": {
           "type": "description",
+          "name": "LIMITED EDITION OF 200 PIECES",
           "settings": {}
         },
         "collapsible-row-0": {
           "type": "collapsible_tab",
           "settings": {
-            "heading": "Materials",
-            "icon": "leather",
+            "heading": "DETAILS",
+            "icon": "eye",
             "content": "",
             "page": ""
           }
@@ -100,7 +95,6 @@
         }
       },
       "block_order": [
-        "vendor",
         "title",
         "caption",
         "price",
@@ -190,7 +184,8 @@
         "columns_mobile": "1",
         "swipe_on_mobile": false,
         "padding_top": 36,
-        "padding_bottom": 36
+        "padding_bottom": 36,
+        "card_style": false
       }
     },
     "image-with-text": {

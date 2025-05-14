@@ -9,10 +9,10 @@
  */
 {
   "current": {
-    "logo": "shopify://shop_images/Rudin_VisualIdentity_030325_Logo_Black.png",
+    "logo": "shopify://shop_images/Rudin_VisualIdentity_030325_Wordmark_Black.png",
     "logo_width": 140,
     "favicon": "shopify://shop_images/Rudin_VisualIdentity_030325_Instagram_ProfilePicture.png",
-    "type_header_font": "inter_n4",
+    "type_header_font": "monotype_goudy_n4",
     "heading_scale": 100,
     "type_body_font": "inter_n4",
     "body_scale": 100,
@@ -142,7 +142,7 @@
     "color_schemes": {
       "scheme-1": {
         "settings": {
-          "background": "#ffffff",
+          "background": "#f7f5f0",
           "background_gradient": "",
           "text": "#000000",
           "button": "#120a8f",
@@ -153,7 +153,7 @@
       },
       "scheme-2": {
         "settings": {
-          "background": "#f3f3f3",
+          "background": "#f7f5f0",
           "background_gradient": "",
           "text": "#000000",
           "button": "#000000",

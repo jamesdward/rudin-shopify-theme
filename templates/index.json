@@ -31,7 +31,7 @@
           "settings": {
             "button_label_1": "Shop collection",
             "button_link_1": "shopify://collections/all",
-            "button_style_secondary_1": true,
+            "button_style_secondary_1": false,
             "button_label_2": "",
             "button_link_2": "",
             "button_style_secondary_2": false
@@ -57,13 +57,49 @@
         "show_text_below": false
       }
     },
+    "multicolumn_pikhA3": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_DWy4Cf": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/Rudin_VisualIdentity_030325_Symbol_Black.svg",
+            "title": "",
+            "text": "",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "column_DWy4Cf"
+      ],
+      "name": "t:sections.multicolumn.presets.name",
+      "settings": {
+        "title": "",
+        "heading_size": "hxl",
+        "image_width": "third",
+        "image_ratio": "adapt",
+        "columns_desktop": 3,
+        "column_alignment": "center",
+        "background_style": "none",
+        "button_label": "",
+        "button_link": "",
+        "color_scheme": "",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 36,
+        "padding_bottom": 0,
+        "card_style": false
+      }
+    },
     "rich_text": {
       "type": "rich-text",
       "blocks": {
         "heading": {
           "type": "heading",
           "settings": {
-            "heading": "RUDIN CREATES<em> limited</em> edition LUXURY AND FINE JEWELRY, <em>where </em>EACH JEWEL <em>is a </em>CHARACTER <em>with its </em>own DESIGN STORY.",
+            "heading": "WE CREATE<em> limited</em> edition FINE AND LUXURY JEWELRY, <em>where </em>each COLLECTIBLE HEIRLOOM <em>is a</em> CHARACTER with<em> its own</em> DESIGN STORY.",
             "heading_size": "h2"
           }
         }
@@ -71,12 +107,15 @@
       "block_order": [
         "heading"
       ],
+      "custom_css": [
+        "h2 {font-stretch: expanded;}"
+      ],
       "settings": {
         "desktop_content_position": "center",
         "content_alignment": "center",
         "color_scheme": "scheme-1",
-        "full_width": true,
-        "padding_top": 40,
+        "full_width": false,
+        "padding_top": 28,
         "padding_bottom": 0
       }
     },
@@ -128,9 +167,12 @@
     },
     "featured_collection_mgi8i8": {
       "type": "featured-collection",
+      "custom_css": [
+        "h2 {text-align: center;}"
+      ],
       "settings": {
         "title": "CURATED <em>by </em>our MASTER STORYTELLER",
-        "heading_size": "h1",
+        "heading_size": "h2",
         "description": "",
         "show_description": false,
         "description_style": "body",
@@ -142,7 +184,7 @@
         "view_all_style": "solid",
         "enable_desktop_slider": true,
         "color_scheme": "scheme-1",
-        "image_ratio": "portrait",
+        "image_ratio": "adapt",
         "image_shape": "default",
         "show_secondary_image": true,
         "show_vendor": false,
@@ -151,7 +193,7 @@
         "columns_mobile": "2",
         "swipe_on_mobile": false,
         "padding_top": 28,
-        "padding_bottom": 36
+        "padding_bottom": 28
       }
     },
     "multicolumn_AW4Yeq": {
@@ -160,8 +202,9 @@
         "column_gX7jJB": {
           "type": "column",
           "settings": {
+            "image": "shopify://shop_images/1_63b3f004-577d-4343-88f2-efea466bd7ac.svg",
             "title": "HIGH JEWELRY CRAFTSMANSHIP",
-            "text": "<p>Handcrafted in our Valenza, Italy atelier, the cradle of high jewelry</p>",
+            "text": "<p>Handcrafted in a family-run atelier in Valenza, Italy––the cradle of high jewelry––via the ancient lost-wax casting process</p>",
             "link_label": "",
             "link": ""
           }
@@ -169,8 +212,9 @@
         "column_HRwL88": {
           "type": "column",
           "settings": {
-            "title": "COMMITTED TO SUSTAINABILITY",
-            "text": "<p>Solid recycled 14k gold and climate-neutral lab grown diamonds</p>",
+            "image": "shopify://shop_images/2_597a656a-6a23-441a-9319-f85e09b11acf.svg",
+            "title": "BEAUTY IS SUSTAINABILITY",
+            "text": "<p>Made to order pieces in solid 14k gold and carbon-neutral lab grown diamonds, accompanied with limited edition artwork</p>",
             "link_label": "",
             "link": ""
           }
@@ -178,6 +222,7 @@
         "column_e3pK7X": {
           "type": "column",
           "settings": {
+            "image": "shopify://shop_images/3_1a3ca772-5caf-4283-9e95-7e9a91aa7dc4.svg",
             "title": "FREE DELIVERY & RETURNS",
             "text": "<p>Complimentary insured shipping and returns on all orders worldwide</p>",
             "link_label": "",
@@ -200,20 +245,68 @@
         "background_style": "none",
         "button_label": "",
         "button_link": "",
-        "color_scheme": "scheme-4",
+        "color_scheme": "scheme-3",
         "columns_mobile": "1",
         "swipe_on_mobile": false,
         "padding_top": 44,
         "padding_bottom": 44,
         "card_style": false
       }
+    },
+    "image_with_text_wWVBcz": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_8AJnMV": {
+          "type": "heading",
+          "settings": {
+            "heading": "<em>Poetic </em>SCHOLARSHIP",
+            "heading_size": "h2"
+          }
+        },
+        "text_KiFrGe": {
+          "type": "text",
+          "settings": {
+            "text": "<p>In a world gravitating towards the slow annihilation of original creativity, our firm exhortation to create handcrafted, collectible objects steeped in tender, rich storytelling</p>",
+            "text_style": "body"
+          }
+        },
+        "button_KxXMTV": {
+          "type": "button",
+          "settings": {
+            "button_label": "Our Story",
+            "button_link": "shopify://pages/our-story",
+            "button_style_secondary": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_8AJnMV",
+        "text_KiFrGe",
+        "button_KxXMTV"
+      ],
+      "settings": {
+        "height": "adapt",
+        "desktop_image_width": "medium",
+        "layout": "image_first",
+        "desktop_content_position": "top",
+        "desktop_content_alignment": "left",
+        "content_layout": "no-overlap",
+        "section_color_scheme": "",
+        "color_scheme": "",
+        "image_behavior": "none",
+        "mobile_content_alignment": "left",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
     }
   },
   "order": [
     "image_banner",
+    "multicolumn_pikhA3",
     "rich_text",
     "multicolumn_jDKNRL",
     "featured_collection_mgi8i8",
-    "multicolumn_AW4Yeq"
+    "multicolumn_AW4Yeq",
+    "image_with_text_wWVBcz"
   ]
 }

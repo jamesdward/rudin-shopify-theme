@@ -38,6 +38,32 @@
   width: 50%;
 }
 
+.multicolumn-card__image-wrapper--custom-width {
+  width: var(--custom-image-width);
+  margin: 0 auto;
+  display: block;
+}
+
+.multicolumn-card__image-wrapper--custom-width .media {
+  padding-bottom: 0 !important;
+  position: relative;
+  height: auto;
+}
+
+.multicolumn-card__image-wrapper--custom-width img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  position: relative;
+  transform: none;
+}
+
+.multicolumn-card__image-wrapper--custom-width .multicolumn-card__image {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
 .multicolumn-list__item.center
   .multicolumn-card__image-wrapper:not(.multicolumn-card__image-wrapper--full-width),
 .multicolumn-list__item:only-child {
