@@ -1,16 +1,20 @@
-<link rel="stylesheet" href="{{ 'component-list-menu.css' | asset_url }}" media="print" onload="this.media='all'">
-<link rel="stylesheet" href="{{ 'component-search.css' | asset_url }}" media="print" onload="this.media='all'">
-<link rel="stylesheet" href="{{ 'component-menu-drawer.css' | asset_url }}" media="print" onload="this.media='all'">
-<link rel="stylesheet" href="{{ 'component-cart-notification.css' | asset_url }}" media="print" onload="this.media='all'">
+<link rel='stylesheet' href='{{ 'component-list-menu.css' | asset_url }}' media='print' onload="this.media='all'">
+<link rel='stylesheet' href='{{ 'component-search.css' | asset_url }}' media='print' onload="this.media='all'">
+<link rel='stylesheet' href='{{ 'component-menu-drawer.css' | asset_url }}' media='print' onload="this.media='all'">
+<link
+  rel='stylesheet'
+  href='{{ 'component-cart-notification.css' | asset_url }}'
+  media='print'
+  onload="this.media='all'"
+>
 
 {%- if settings.predictive_search_enabled -%}
-  <link rel="stylesheet" href="{{ 'component-price.css' | asset_url }}" media="print" onload="this.media='all'">
+  <link rel='stylesheet' href='{{ 'component-price.css' | asset_url }}' media='print' onload="this.media='all'">
 {%- endif -%}
 
 {%- if section.settings.menu_type_desktop == 'mega' -%}
-  <link rel="stylesheet" href="{{ 'component-mega-menu.css' | asset_url }}" media="print" onload="this.media='all'">
+  <link rel='stylesheet' href='{{ 'component-mega-menu.css' | asset_url }}' media='print' onload="this.media='all'">
 {%- endif -%}
-
 
 <style>
   header-drawer {
@@ -219,7 +223,7 @@
   }
 {%- endstyle -%}
 
-<script src="{{ 'cart-notification.js' | asset_url }}" defer="defer"></script>
+<script src='{{ 'cart-notification.js' | asset_url }}' defer='defer'></script>
 
 {%- liquid
   for block in section.blocks
@@ -229,20 +233,22 @@
   endfor
 -%}
 
-<{% if section.settings.sticky_header_type != 'none' %}div data-sticky-header data-sticky-type="{{ section.settings.sticky_header_type }}"{% else %}div{% endif %} class="header-wrapper color-{{ section.settings.color_scheme }} gradient{% if section.settings.show_line_separator %} header-wrapper--border-bottom{% endif %}">
-  {%- liquid
-    assign social_links = false
-    assign localization_forms = false
+{%- liquid
+  assign social_links = false
+  assign localization_forms = false
+  assign header_classes = 'header-wrapper color-' | append: section.settings.color_scheme | append: ' gradient'
+  if section.settings.show_line_separator
+    assign header_classes = header_classes | append: ' header-wrapper--border-bottom'
+  endif
+-%}
 
-    if settings.social_twitter_link != blank or settings.social_facebook_link != blank or settings.social_pinterest_link != blank or settings.social_instagram_link != blank or settings.social_youtube_link != blank or settings.social_vimeo_link != blank or settings.social_tiktok_link != blank or settings.social_tumblr_link != blank or settings.social_snapchat_link != blank
-      assign social_links = true
-    endif
-
-    if localization.available_countries.size > 1 and section.settings.enable_country_selector or section.settings.enable_language_selector and localization.available_languages.size > 1
-      assign localization_forms = true
-    endif
-  -%}
-  <header class="header header--{{ section.settings.logo_position }} header--mobile-{{ section.settings.mobile_logo_position }} page-width{% if section.settings.menu_type_desktop == 'drawer' %} drawer-menu{% endif %}{% if section.settings.menu != blank %} header--has-menu{% endif %}{% if has_app_block %} header--has-app{% endif %}{% if social_links %} header--has-social{% endif %}{% if shop.customer_accounts_enabled %} header--has-account{% endif %}{% if localization_forms %} header--has-localizations{% endif %}{% if section.settings.sticky_header_type != 'none' %} shopify-section-header-sticky{% endif %}">
+<div
+  {% if section.settings.sticky_header_type != 'none' %}
+    data-sticky-header data-sticky-type='{{ section.settings.sticky_header_type }}'
+  {% endif %}
+  class='{{ header_classes }}'
+>
+  <header class='header header--{{ section.settings.logo_position }} header--mobile-{{ section.settings.mobile_logo_position }} page-width{% if section.settings.menu_type_desktop == 'drawer' %} drawer-menu{% endif %}{% if section.settings.menu != blank %} header--has-menu{% endif %}{% if has_app_block %} header--has-app{% endif %}{% if social_links %} header--has-social{% endif %}{% if shop.customer_accounts_enabled %} header--has-account{% endif %}{% if localization_forms %} header--has-localizations{% endif %}{% if section.settings.sticky_header_type != 'none' %} shopify-section-header-sticky{% endif %}'>
     {%- liquid
       if section.settings.menu != blank
         render 'header-drawer'
@@ -255,40 +261,46 @@
 
     {%- if section.settings.logo_position != 'middle-center' -%}
       {%- if request.page_type == 'index' -%}
-        <h1 class="header__heading">
+        <h1 class='header__heading'>
       {%- endif -%}
-          <a href="{{ routes.root_url }}" class="header__heading-link link link--text focus-inset">
-            {%- if settings.logo != blank -%}
-              <div class="header__heading-logo-wrapper">
-                {%- assign logo_alt = settings.logo.alt | default: shop.name | escape -%}
-                {%- assign logo_height = settings.logo_width | divided_by: settings.logo.aspect_ratio -%}
-                {% capture sizes %}(max-width: {{ settings.logo_width | times: 2 }}px) 50vw, {{ settings.logo_width }}px{% endcapture %}
-                {% capture widths %}{{ settings.logo_width }}, {{ settings.logo_width | times: 1.5 | round }}, {{ settings.logo_width | times: 2 }}{% endcapture %}
-                {{ settings.logo | image_url: width: 600 | image_tag:
-                  class: 'header__heading-logo motion-reduce default-logo',
+      <a href='{{ routes.root_url }}' class='header__heading-link link link--text focus-inset'>
+        {%- if settings.logo != blank -%}
+          <div class='header__heading-logo-wrapper'>
+            {%- assign logo_alt = settings.logo.alt | default: shop.name | escape -%}
+            {%- assign logo_height = settings.logo_width | divided_by: settings.logo.aspect_ratio -%}
+            {% capture sizes %}(max-width: {{ settings.logo_width | times: 2 }}px) 50vw, {{ settings.logo_width }}px{% endcapture %}
+            {% capture widths %}{{ settings.logo_width }}, {{ settings.logo_width | times: 1.5 | round }}, {{ settings.logo_width | times: 2 }}{% endcapture %}
+            {{
+              settings.logo
+              | image_url: width: 600
+              | image_tag:
+                class: 'header__heading-logo motion-reduce default-logo',
+                widths: widths,
+                height: logo_height,
+                width: settings.logo_width,
+                alt: logo_alt,
+                sizes: sizes,
+                preload: true
+            }}
+            {%- if settings.logo_light != blank -%}
+              {{
+                settings.logo_light
+                | image_url: width: 600
+                | image_tag:
+                  class: 'header__heading-logo motion-reduce light-logo',
                   widths: widths,
                   height: logo_height,
                   width: settings.logo_width,
                   alt: logo_alt,
                   sizes: sizes,
                   preload: true
-                }}
-                {%- if settings.logo_light != blank -%}
-                  {{ settings.logo_light | image_url: width: 600 | image_tag:
-                    class: 'header__heading-logo motion-reduce light-logo',
-                    widths: widths,
-                    height: logo_height,
-                    width: settings.logo_width,
-                    alt: logo_alt,
-                    sizes: sizes,
-                    preload: true
-                  }}
-                {%- endif -%}
-              </div>
-            {%- else -%}
-              <span class="h2">{{ shop.name }}</span>
+              }}
             {%- endif -%}
-          </a>
+          </div>
+        {%- else -%}
+          <span class='h2'>{{ shop.name }}</span>
+        {%- endif -%}
+      </a>
       {%- if request.page_type == 'index' -%}
         </h1>
       {%- endif -%}
@@ -306,41 +318,58 @@
 
     {%- if section.settings.logo_position == 'middle-center' -%}
       {%- if request.page_type == 'index' -%}
-        <h1 class="header__heading">
+        <h1 class='header__heading'>
       {%- endif -%}
-          <a href="{{ routes.root_url }}" class="header__heading-link link link--text focus-inset">
-            {%- if settings.logo != blank -%}
-              <div class="header__heading-logo-wrapper">
-                {%- assign logo_alt = settings.logo.alt | default: shop.name | escape -%}
-                {%- assign logo_height = settings.logo_width | divided_by: settings.logo.aspect_ratio -%}
-                {% capture sizes %}(min-width: 750px) {{ settings.logo_width }}px, 50vw{% endcapture %}
-                {% capture widths %}{{ settings.logo_width }}, {{ settings.logo_width | times: 1.5 | round }}, {{ settings.logo_width | times: 2 }}{% endcapture %}
-                {{ settings.logo | image_url: width: 600 | image_tag:
-                  class: 'header__heading-logo',
+      <a href='{{ routes.root_url }}' class='header__heading-link link link--text focus-inset'>
+        {%- if settings.logo != blank -%}
+          <div class='header__heading-logo-wrapper'>
+            {%- assign logo_alt = settings.logo.alt | default: shop.name | escape -%}
+            {%- assign logo_height = settings.logo_width | divided_by: settings.logo.aspect_ratio -%}
+            {% capture sizes %}(min-width: 750px) {{ settings.logo_width }}px, 50vw{% endcapture %}
+            {% capture widths %}{{ settings.logo_width }}, {{ settings.logo_width | times: 1.5 | round }}, {{ settings.logo_width | times: 2 }}{% endcapture %}
+            {{
+              settings.logo
+              | image_url: width: 600
+              | image_tag:
+                class: 'header__heading-logo default-logo',
+                widths: widths,
+                height: logo_height,
+                width: settings.logo_width,
+                alt: logo_alt,
+                sizes: sizes,
+                preload: true
+            }}
+            {%- if section.settings.logo_light != blank -%}
+              {{
+                section.settings.logo_light
+                | image_url: width: 600
+                | image_tag:
+                  class: 'header__heading-logo light-logo',
                   widths: widths,
                   height: logo_height,
                   width: settings.logo_width,
                   alt: logo_alt,
                   sizes: sizes,
                   preload: true
-                }}
-              </div>
-            {%- else -%}
-              <span class="h2">{{ shop.name }}</span>
+              }}
             {%- endif -%}
-          </a>
+          </div>
+        {%- else -%}
+          <span class='h2'>{{ shop.name }}</span>
+        {%- endif -%}
+      </a>
       {%- if request.page_type == 'index' -%}
         </h1>
       {%- endif -%}
     {%- endif -%}
 
-    <div class="header__icons{% if section.settings.enable_country_selector or section.settings.enable_language_selector %} header__icons--localization header-localization{% endif %}">
+    <div class='header__icons{% if section.settings.enable_country_selector or section.settings.enable_language_selector %} header__icons--localization header-localization{% endif %}'>
       {% if section.settings.secondary_menu != blank %}
-        <div class="header__secondary-menu">
-          <ul class="list-menu list-menu--inline" role="list">
+        <div class='header__secondary-menu'>
+          <ul class='list-menu list-menu--inline' role='list'>
             {%- for link in linklists[section.settings.secondary_menu].links -%}
               <li>
-                <a href="{{ link.url }}" class="header__heading-link link link--text focus-inset">
+                <a href='{{ link.url }}' class='header__heading-link link link--text focus-inset'>
                   {{ link.title | escape }}
                 </a>
               </li>
@@ -348,13 +377,13 @@
           </ul>
         </div>
       {% endif %}
-      
-      <div class="desktop-localization-wrapper">
+
+      <div class='desktop-localization-wrapper'>
         {%- if section.settings.enable_country_selector and localization.available_countries.size > 1 -%}
-          <localization-form class="small-hide medium-hide" data-prevent-hide>
+          <localization-form class='small-hide medium-hide' data-prevent-hide>
             {%- form 'localization', id: 'HeaderCountryForm', class: 'localization-form' -%}
               <div>
-                <h2 class="visually-hidden" id="HeaderCountryLabel">{{ 'localization.country_label' | t }}</h2>
+                <h2 class='visually-hidden' id='HeaderCountryLabel'>{{ 'localization.country_label' | t }}</h2>
                 {%- render 'country-localization', localPosition: 'HeaderCountry' -%}
               </div>
             {%- endform -%}
@@ -362,10 +391,10 @@
         {% endif %}
 
         {%- if section.settings.enable_language_selector and localization.available_languages.size > 1 -%}
-          <localization-form class="small-hide medium-hide" data-prevent-hide>
+          <localization-form class='small-hide medium-hide' data-prevent-hide>
             {%- form 'localization', id: 'HeaderLanguageForm', class: 'localization-form' -%}
               <div>
-                <h2 class="visually-hidden" id="HeaderLanguageLabel">{{ 'localization.language_label' | t }}</h2>
+                <h2 class='visually-hidden' id='HeaderLanguageLabel'>{{ 'localization.language_label' | t }}</h2>
                 {%- render 'language-localization', localPosition: 'HeaderLanguage' -%}
               </div>
             {%- endform -%}
@@ -376,22 +405,22 @@
 
       {%- if shop.customer_accounts_enabled -%}
         <a
-          href="{%- if customer -%}{{ routes.account_url }}{%- else -%}{{ routes.account_login_url }}{%- endif -%}"
-          class="header__icon header__icon--account link focus-inset{% if section.settings.menu != blank %} small-hide{% endif %}"
-          rel="nofollow"
+          href='{%- if customer -%}{{ routes.account_url }}{%- else -%}{{ routes.account_login_url }}{%- endif -%}'
+          class='header__icon header__icon--account link focus-inset{% if section.settings.menu != blank %} small-hide{% endif %}'
+          rel='nofollow'
         >
           {%- if section.settings.enable_customer_avatar -%}
             <account-icon>
               {%- if customer and customer.has_avatar? -%}
                 {{ customer | avatar }}
               {%- else -%}
-                <span class="svg-wrapper">{{ 'icon-account.svg' | inline_asset_content }}</span>
+                <span class='svg-wrapper'>{{ 'icon-account.svg' | inline_asset_content }}</span>
               {%- endif -%}
             </account-icon>
           {%- else -%}
-            <span class="svg-wrapper">{{ 'icon-account.svg' | inline_asset_content }}</span>
+            <span class='svg-wrapper'>{{ 'icon-account.svg' | inline_asset_content }}</span>
           {%- endif -%}
-          <span class="visually-hidden">
+          <span class='visually-hidden'>
             {%- liquid
               if customer
                 echo 'customer.account_fallback' | t
@@ -410,32 +439,35 @@
         {%- endcase -%}
       {%- endfor -%}
 
-      <a href="{{ routes.cart_url }}" class="header__icon header__icon--cart link focus-inset" id="cart-icon-bubble">
-          {% if cart == empty %}
-            <span class="svg-wrapper">{{'icon-cart-empty.svg' | inline_asset_content }}</span>
-          {% else %}
-            <span class="svg-wrapper">{{'icon-cart.svg' | inline_asset_content }}</span>
-          {% endif %}
-        <span class="visually-hidden">{{ 'templates.cart.cart' | t }}</span>
+      <a href='{{ routes.cart_url }}' class='header__icon header__icon--cart link focus-inset' id='cart-icon-bubble'>
+        {% if cart == empty %}
+          <span class='svg-wrapper'>{{ 'icon-cart-empty.svg' | inline_asset_content }}</span>
+        {% else %}
+          <span class='svg-wrapper'>{{ 'icon-cart.svg' | inline_asset_content }}</span>
+        {% endif %}
+        <span class='visually-hidden'>{{ 'templates.cart.cart' | t }}</span>
         {%- if cart != empty -%}
-          <div class="cart-count-bubble">
+          <div class='cart-count-bubble'>
             {%- if cart.item_count < 100 -%}
-              <span aria-hidden="true">{{ cart.item_count }}</span>
+              <span aria-hidden='true'>{{ cart.item_count }}</span>
             {%- endif -%}
-            <span class="visually-hidden">{{ 'sections.header.cart_count' | t: count: cart.item_count }}</span>
+            <span class='visually-hidden'>{{ 'sections.header.cart_count' | t: count: cart.item_count }}</span>
           </div>
         {%- endif -%}
       </a>
     </div>
   </header>
-</{% if section.settings.sticky_header_type != 'none' %}div{% else %}div{% endif %}>
+</div>
 
-{%- if settings.cart_type == "notification" -%}
-  {%- render 'cart-notification', color_scheme: section.settings.color_scheme, desktop_menu_type: section.settings.menu_type_desktop -%}
+{%- if settings.cart_type == 'notification' -%}
+  {%- render 'cart-notification',
+    color_scheme: section.settings.color_scheme,
+    desktop_menu_type: section.settings.menu_type_desktop
+  -%}
 {%- endif -%}
 
 {% javascript %}
-  document.addEventListener('DOMContentLoaded', function() {
+  document.addEventListener('DOMContentLoaded', function () {
     const headerWrapper = document.querySelector('.header-wrapper');
     const header = document.querySelector('.section-header');
     const announcementBar = document.querySelector('.announcement-bar');
@@ -490,7 +522,7 @@
 
     function onScroll() {
       const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-      
+
       // Clear any pending scroll timeout
       if (isScrolling) {
         window.clearTimeout(isScrolling);
@@ -498,7 +530,7 @@
 
       // Update header state immediately
       updateHeaderState(scrollTop);
-      
+
       // Store current scroll position
       currentScrollTop = scrollTop;
 
@@ -526,7 +558,7 @@
   });
 {% endjavascript %}
 
-<script type="application/ld+json">
+<script type='application/ld+json'>
   {
     "@context": "http://schema.org",
     "@type": "Organization",
@@ -550,8 +582,8 @@
 </script>
 
 {%- if request.page_type == 'index' -%}
-  {% assign potential_action_target = request.origin | append: routes.search_url | append: "?q={search_term_string}" %}
-  <script type="application/ld+json">
+  {% assign potential_action_target = request.origin | append: routes.search_url | append: '?q={search_term_string}' %}
+  <script type='application/ld+json'>
     {
       "@context": "http://schema.org",
       "@type": "WebSite",
@@ -571,6 +603,27 @@
   "name": "t:sections.header.name",
   "class": "section-header",
   "settings": [
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "t:sections.header.settings.logo.label"
+    },
+    {
+      "type": "image_picker",
+      "id": "logo_light",
+      "label": "Light logo (for transparent header)",
+      "info": "This logo will be shown when the header is transparent"
+    },
+    {
+      "type": "range",
+      "id": "logo_width",
+      "min": 50,
+      "max": 250,
+      "step": 10,
+      "default": 100,
+      "unit": "px",
+      "label": "t:sections.header.settings.logo_width.label"
+    },
     {
       "type": "select",
       "id": "logo_position",
@@ -766,6 +819,6 @@
       "label": "t:sections.all.padding.padding_bottom",
       "default": 20
     }
-  ],
+  ]
 }
 {% endschema %}
