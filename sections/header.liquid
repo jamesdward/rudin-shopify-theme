@@ -127,6 +127,61 @@
       top: var(--announcement-bar-height, 0px);
     }
 
+    /* Logo handling */
+    .header__heading-logo-wrapper {
+      position: relative;
+    }
+
+    .header__heading-logo {
+      transition: opacity 0.2s ease-out;
+    }
+
+    .default-logo {
+      opacity: 0;
+    }
+
+    .light-logo {
+      opacity: 1;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+
+    .header-wrapper.scrolled .default-logo {
+      opacity: 1;
+    }
+
+    .header-wrapper.scrolled .light-logo {
+      opacity: 0;
+    }
+
+    /* White text and icons when transparent */
+    .header-wrapper .header__heading-link .h2,
+    .header-wrapper .header__menu-item,
+    .header-wrapper .header__icon,
+    .header-wrapper .header__heading-link,
+    .header-wrapper .header__icon--cart,
+    .header-wrapper .header__icon--account,
+    .header-wrapper .header__search,
+    .header-wrapper .header__search-input,
+    .header-wrapper .header__search-input::placeholder {
+      color: rgb(255, 255, 255) !important;
+      transition: color 0.2s ease-out;
+    }
+
+    /* Return to default colors when scrolled */
+    .header-wrapper.scrolled .header__heading-link .h2,
+    .header-wrapper.scrolled .header__menu-item,
+    .header-wrapper.scrolled .header__icon,
+    .header-wrapper.scrolled .header__heading-link,
+    .header-wrapper.scrolled .header__icon--cart,
+    .header-wrapper.scrolled .header__icon--account,
+    .header-wrapper.scrolled .header__search,
+    .header-wrapper.scrolled .header__search-input,
+    .header-wrapper.scrolled .header__search-input::placeholder {
+      color: rgb(var(--color-foreground)) !important;
+    }
+
     /* Add padding to first section to account for announcement bar only */
     .shopify-section:first-of-type {
       {% comment %} padding-top: var(--announcement-bar-height, 0px); {% endcomment %}
@@ -210,7 +265,7 @@
                 {% capture sizes %}(max-width: {{ settings.logo_width | times: 2 }}px) 50vw, {{ settings.logo_width }}px{% endcapture %}
                 {% capture widths %}{{ settings.logo_width }}, {{ settings.logo_width | times: 1.5 | round }}, {{ settings.logo_width | times: 2 }}{% endcapture %}
                 {{ settings.logo | image_url: width: 600 | image_tag:
-                  class: 'header__heading-logo motion-reduce',
+                  class: 'header__heading-logo motion-reduce default-logo',
                   widths: widths,
                   height: logo_height,
                   width: settings.logo_width,
@@ -218,6 +273,17 @@
                   sizes: sizes,
                   preload: true
                 }}
+                {%- if settings.logo_light != blank -%}
+                  {{ settings.logo_light | image_url: width: 600 | image_tag:
+                    class: 'header__heading-logo motion-reduce light-logo',
+                    widths: widths,
+                    height: logo_height,
+                    width: settings.logo_width,
+                    alt: logo_alt,
+                    sizes: sizes,
+                    preload: true
+                  }}
+                {%- endif -%}
               </div>
             {%- else -%}
               <span class="h2">{{ shop.name }}</span>
