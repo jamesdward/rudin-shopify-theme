@@ -281,9 +281,7 @@ slider-component.slider-component-full-width {
 }
 
 .slider-counter {
-  display: flex;
-  justify-content: center;
-  min-width: 4.4rem;
+  display: none;
 }
 
 @media screen and (min-width: 750px) {
@@ -352,8 +350,21 @@ slider-component.slider-component-full-width {
 
 .slider-buttons {
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  transform: translateY(-50%);
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+slider-component:hover .slider-buttons {
+  opacity: 1;
 }
 
 @media screen and (min-width: 990px) {
@@ -375,19 +386,20 @@ slider-component.slider-component-full-width {
 }
 
 .slider-button {
-  color: rgba(var(--color-foreground), 0.75);
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  width: 44px;
-  height: 44px;
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-.slider-button:not([disabled]):hover {
+  width: 4.4rem;
+  height: 4.4rem;
+  padding: 0;
   color: rgb(var(--color-foreground));
+  background: rgb(var(--color-background));
+  border: 0.1rem solid rgba(var(--color-foreground), 0.08);
+  border-radius: 50%;
+  cursor: pointer;
+  pointer-events: auto;
+  transition: all 0.2s ease;
 }
 
 .slider-button .icon {
@@ -413,4 +425,39 @@ slider-component.slider-component-full-width {
 
 .slider-button--prev:not([disabled]):hover .icon {
   transform: rotate(90deg) scale(1.1);
+}
+
+.slider-button--prev {
+  margin-right: auto;
+  margin-left: 1rem;
+}
+
+.slider-button--next {
+  margin-left: auto;
+  margin-right: 1rem;
+}
+
+@media screen and (min-width: 990px) {
+  .slider-button--prev {
+    margin-left: 2rem;
+  }
+
+  .slider-button--next {
+    margin-right: 2rem;
+  }
+}
+
+@media screen and (max-width: 749px) {
+  .slider-button {
+    width: 3.6rem;
+    height: 3.6rem;
+  }
+
+  .slider-button--prev {
+    margin-left: 0.5rem;
+  }
+
+  .slider-button--next {
+    margin-right: 0.5rem;
+  }
 }
