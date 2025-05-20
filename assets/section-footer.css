@@ -394,6 +394,18 @@
   justify-content: flex-end;
 }
 
+.footer__image-row {
+  margin-bottom: 2rem;
+}
+
+.footer__images-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: center;
+  justify-content: center;
+}
+
 @media screen and (max-width: 749px) {
   .footer-block-image,
   .footer-block-image.left,

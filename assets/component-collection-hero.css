@@ -1,6 +1,8 @@
 .collection-hero__inner {
   display: flex;
   flex-direction: column;
+  justify-content: flex-end;
+  min-height: 100px;
 }
 
 .collection-hero--with-image .collection-hero__inner {
@@ -37,7 +39,9 @@
 }
 
 .collection-hero__title {
-  margin: 2.5rem 0;
+  margin: 2.5rem 0 0 0;
+  font-size: 4rem;
+  text-transform: uppercase;
 }
 
 .collection-hero__title + .collection-hero__description {
