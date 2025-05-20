@@ -48,6 +48,20 @@
     "footer": {
       "type": "footer",
       "blocks": {
+        "footer_image_eKHzWV": {
+          "type": "footer_image",
+          "settings": {
+            "image": "shopify://shop_images/image_20.jpg",
+            "image_width": 100
+          }
+        },
+        "footer_image_neipDV": {
+          "type": "footer_image",
+          "settings": {
+            "image": "shopify://shop_images/image_21_2d2b03bf-c35b-440a-923d-3df8a20a07af.png",
+            "image_width": 100
+          }
+        },
         "footer-0": {
           "type": "link_list",
           "settings": {
@@ -71,6 +85,8 @@
         }
       },
       "block_order": [
+        "footer_image_eKHzWV",
+        "footer_image_neipDV",
         "footer-0",
         "footer-1",
         "footer-2"

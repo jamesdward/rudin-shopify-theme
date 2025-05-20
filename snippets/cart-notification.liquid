@@ -10,45 +10,62 @@
 {% endcomment %}
 
 <cart-notification>
-  <div class="cart-notification-wrapper{% if desktop_menu_type != 'drawer' %} page-width{% endif %}">
+  <div class='cart-notification-wrapper{% if desktop_menu_type != 'drawer' %} page-width{% endif %}'>
     <div
-      id="cart-notification"
-      class="cart-notification focus-inset{% if color_scheme %} color-{{ color_scheme }} gradient{% endif %}"
-      aria-modal="true"
-      aria-label="{{ 'general.cart.item_added' | t }}"
-      role="dialog"
-      tabindex="-1"
+      id='cart-notification'
+      class='cart-notification focus-inset{% if color_scheme %} color-{{ color_scheme }} gradient{% endif %}'
+      aria-modal='true'
+      aria-label='{{ 'general.cart.item_added' | t }}'
+      role='dialog'
+      tabindex='-1'
     >
-      <div class="cart-notification__header">
-        <h2 class="cart-notification__heading caption-large text-body">
+      <div class='cart-notification__header'>
+        <h2 class='cart-notification__heading caption-large text-body'>
           {{- 'icon-checkmark.svg' | inline_asset_content -}}
           {{ 'general.cart.item_added' | t }}
         </h2>
+
         <button
-          type="button"
-          class="cart-notification__close modal__close-button link link--text focus-inset"
-          aria-label="{{ 'accessibility.close' | t }}"
+          type='button'
+          class='cart-notification__close modal__close-button link link--text focus-inset'
+          aria-label='{{ 'accessibility.close' | t }}'
         >
-          <span class="svg-wrapper">
+          <span class='svg-wrapper'>
             {{- 'icon-close.svg' | inline_asset_content -}}
           </span>
         </button>
       </div>
-      <div id="cart-notification-product" class="cart-notification-product"></div>
-      <div class="cart-notification__links">
+      <div id='cart-notification-product' class='cart-notification-product'></div>
+      <div class='cart-notification__links'>
+        <div class='engraving-section' onclick='event.stopPropagation()'>
+          <button type='button' class='button button--secondary button--full-width' id='add-engraving-button'>
+            {{ 'general.cart.add_engraving' | t }}
+          </button>
+          <div class='engraving-input-wrapper' style='display: none;'>
+            <input
+              type='text'
+              id='engraving-text'
+              class='engraving-input'
+              placeholder='{{ 'general.cart.engraving_placeholder' | t }}'
+            >
+            <button type='button' class='button button--primary button--full-width' id='save-engraving-button'>
+              {{ 'general.cart.save_engraving' | t }}
+            </button>
+          </div>
+        </div>
         <a
-          href="{{ routes.cart_url }}"
-          id="cart-notification-button"
-          class="button button--secondary button--full-width"
+          href='{{ routes.cart_url }}'
+          id='cart-notification-button'
+          class='button button--secondary button--full-width'
         >
           {{- 'general.cart.view_empty_cart' | t -}}
         </a>
-        <form action="{{ routes.cart_url }}" method="post" id="cart-notification-form">
-          <button class="button button--primary button--full-width" name="checkout">
+        <form action='{{ routes.cart_url }}' method='post' id='cart-notification-form'>
+          <button class='button button--primary button--full-width' name='checkout'>
             {{ 'sections.cart.checkout' | t }}
           </button>
         </form>
-        <button type="button" class="link button-label">{{ 'general.continue_shopping' | t }}</button>
+        <button type='button' class='link button-label'>{{ 'general.continue_shopping' | t }}</button>
       </div>
     </div>
   </div>
@@ -56,5 +73,21 @@
 {% style %}
   .cart-notification {
     display: none;
+  }
+
+  .engraving-section {
+    margin-bottom: 1rem;
+  }
+
+  .engraving-input-wrapper {
+    margin-top: 1rem;
+  }
+
+  .engraving-input {
+    width: 100%;
+    padding: 0.75rem;
+    margin-bottom: 0.5rem;
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
   }
 {% endstyle %}
