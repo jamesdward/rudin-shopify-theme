@@ -1,16 +1,188 @@
 class CartDrawer extends HTMLElement {
   constructor() {
     super();
+    console.log('CartDrawer initialized'); // Debug log
 
+    // Bind methods to this instance
+    this.handleEngravingClick = this.handleEngravingClick.bind(this);
+    this.handleSaveClick = this.handleSaveClick.bind(this);
+    this.close = this.close.bind(this);
+    this.open = this.open.bind(this);
+
+    // Add event listeners
     this.addEventListener(
       'keyup',
       (evt) => evt.code === 'Escape' && this.close(),
     );
     this.querySelector('#CartDrawer-Overlay').addEventListener(
       'click',
-      this.close.bind(this),
+      this.close,
     );
+
+    // Set up engraving functionality
+    this.setupEngravingHandlers();
+
     this.setHeaderCartIconAccessibility();
+  }
+
+  setupEngravingHandlers() {
+    // Remove existing handlers if they exist
+    if (this._handlersSetup) {
+      console.log('Handlers already set up, removing old ones');
+      document.removeEventListener('click', this._handleDocumentClick);
+      this._handlersSetup = false;
+    }
+
+    console.log('Setting up engraving handlers');
+
+    // Create a single document click handler
+    this._handleDocumentClick = (event) => {
+      if (event.target.matches('.add-engraving-button')) {
+        console.log('Add engraving button clicked');
+        this.handleEngravingClick(event);
+      } else if (event.target.matches('.save-engraving-button')) {
+        console.log('Save engraving button clicked');
+        this.handleSaveClick(event);
+      }
+    };
+
+    // Add the document click handler
+    document.addEventListener('click', this._handleDocumentClick);
+    this._handlersSetup = true;
+  }
+
+  handleEngravingClick(event) {
+    console.log('Handling engraving click');
+    event.preventDefault();
+    event.stopPropagation();
+
+    const button = event.target;
+    const engravingSection = button.closest('.engraving-section');
+    console.log('Found engraving section:', engravingSection);
+
+    if (!engravingSection) {
+      console.error('Could not find engraving section');
+      return;
+    }
+
+    const inputWrapper = engravingSection.querySelector(
+      '.engraving-input-wrapper',
+    );
+    console.log('Found input wrapper:', inputWrapper);
+
+    if (!inputWrapper) {
+      console.error('Could not find input wrapper');
+      return;
+    }
+
+    const input = inputWrapper.querySelector('.engraving-input');
+    console.log('Found input:', input);
+
+    // Toggle the input wrapper
+    const isHidden = inputWrapper.style.display === 'none';
+    console.log('is hidden', isHidden, inputWrapper.style.display);
+
+    // Use a small delay to prevent double-triggering
+    setTimeout(() => {
+      inputWrapper.style.display = isHidden ? 'block' : 'none';
+
+      // Focus the input if showing
+      if (isHidden && input) {
+        input.focus();
+      }
+    }, 0);
+  }
+
+  handleSaveClick(event) {
+    console.log('Handling save click');
+    event.preventDefault();
+    event.stopPropagation();
+
+    const button = event.target;
+    const engravingSection = button.closest('.engraving-section');
+    const input = engravingSection.querySelector('.engraving-input');
+    const itemKey = button.dataset.itemKey;
+
+    if (!itemKey) {
+      console.error('No item key found on save button');
+      return;
+    }
+
+    this.saveEngraving(itemKey, input.value);
+  }
+
+  async saveEngraving(itemKey, engravingText) {
+    try {
+      console.log('Saving engraving:', { itemKey, engravingText });
+
+      // Show loading state
+      const saveButton = this.querySelector(
+        `[data-item-key="${itemKey}"].save-engraving-button`,
+      );
+      const originalText = saveButton.textContent;
+      saveButton.textContent = 'Saving...';
+      saveButton.disabled = true;
+
+      // Update the cart item
+      const response = await fetch('/cart/change.js', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          id: itemKey,
+          properties: {
+            Engraving: engravingText,
+          },
+        }),
+      });
+
+      const cart = await response.json();
+      console.log('Cart response:', cart);
+
+      // Log the cart item to check if the engraving was saved
+      const updatedItem = cart.items.find((item) => item.key === itemKey);
+      console.log('Updated cart item:', updatedItem);
+      console.log('Item properties:', updatedItem?.properties);
+
+      // Update the cart drawer
+      const sectionsResponse = await fetch('/?sections=cart-drawer');
+      const sectionsHtml = await sectionsResponse.text();
+      const parser = new DOMParser();
+      const doc = parser.parseFromString(sectionsHtml, 'text/html');
+      const newCartDrawer = doc.querySelector('cart-drawer');
+
+      if (newCartDrawer) {
+        this.innerHTML = newCartDrawer.innerHTML;
+        this.setupEngravingHandlers(); // Re-setup handlers after content update
+      }
+
+      // Hide the input wrapper
+      const engravingSection = this.querySelector(
+        `[data-item-key="${itemKey}"]`,
+      ).closest('.engraving-section');
+      const inputWrapper = engravingSection.querySelector(
+        '.engraving-input-wrapper',
+      );
+      inputWrapper.style.display = 'none';
+
+      // Update the button text
+      const addButton = engravingSection.querySelector('.add-engraving-button');
+      addButton.textContent = engravingText
+        ? 'Edit Engraving'
+        : 'Add Engraving';
+    } catch (error) {
+      console.error('Error saving engraving:', error);
+      // Show error state
+      const saveButton = this.querySelector(
+        `[data-item-key="${itemKey}"].save-engraving-button`,
+      );
+      saveButton.textContent = 'Error - Try Again';
+      setTimeout(() => {
+        saveButton.textContent = 'Save Engraving';
+        saveButton.disabled = false;
+      }, 2000);
+    }
   }
 
   setHeaderCartIconAccessibility() {
@@ -106,6 +278,7 @@ class CartDrawer extends HTMLElement {
         'click',
         this.close.bind(this),
       );
+      this.setupEngravingHandlers(); // Re-setup handlers after rendering contents
       this.open();
     });
   }

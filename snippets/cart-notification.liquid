@@ -53,18 +53,21 @@
             </button>
           </div>
         </div>
-        <a
-          href='{{ routes.cart_url }}'
+        <button
+          type='button'
           id='cart-notification-button'
           class='button button--secondary button--full-width'
+          onclick="window.location.href='{{ routes.cart_url }}'"
         >
           {{- 'general.cart.view_empty_cart' | t -}}
-        </a>
-        <form action='{{ routes.cart_url }}' method='post' id='cart-notification-form'>
-          <button class='button button--primary button--full-width' name='checkout'>
-            {{ 'sections.cart.checkout' | t }}
-          </button>
-        </form>
+        </button>
+        <button
+          type='button'
+          class='button button--primary button--full-width'
+          onclick="window.location.href='{{ routes.cart_url }}?checkout'"
+        >
+          {{ 'sections.cart.checkout' | t }}
+        </button>
         <button type='button' class='link button-label'>{{ 'general.continue_shopping' | t }}</button>
       </div>
     </div>
