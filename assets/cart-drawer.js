@@ -110,7 +110,6 @@ class CartDrawer extends HTMLElement {
 
     this.saveEngraving(itemKey, input.value);
   }
-
   async saveEngraving(itemKey, engravingText) {
     try {
       console.log('Saving engraving:', { itemKey, engravingText });
@@ -140,51 +139,63 @@ class CartDrawer extends HTMLElement {
       const cart = await response.json();
       console.log('Cart response:', cart);
 
-      // Log the cart item to check if the engraving was saved
-      const updatedItem = cart.items.find((item) => item.key === itemKey);
-      console.log('Updated cart item:', updatedItem);
-      console.log('Item properties:', updatedItem?.properties);
-
-      // Update the cart drawer
+      // Update the cart drawer - improved approach
       const sectionsResponse = await fetch('/?sections=cart-drawer');
-      const sectionsHtml = await sectionsResponse.text();
-      const parser = new DOMParser();
-      const doc = parser.parseFromString(sectionsHtml, 'text/html');
-      const newCartDrawer = doc.querySelector('cart-drawer');
+      const sections = await sectionsResponse.json();
 
-      if (newCartDrawer) {
-        this.innerHTML = newCartDrawer.innerHTML;
-        this.setupEngravingHandlers(); // Re-setup handlers after content update
+      // Check if we got the cart-drawer section
+      if (sections['cart-drawer']) {
+        // Parse the HTML properly
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(
+          sections['cart-drawer'],
+          'text/html',
+        );
+        const newCartDrawer = doc.querySelector('cart-drawer');
+
+        if (newCartDrawer) {
+          // Replace the content
+          this.innerHTML = newCartDrawer.innerHTML;
+          this.setupEngravingHandlers(); // Re-setup handlers after content update
+        }
       }
 
       // Hide the input wrapper
       const engravingSection = this.querySelector(
         `[data-item-key="${itemKey}"]`,
-      ).closest('.engraving-section');
-      const inputWrapper = engravingSection.querySelector(
-        '.engraving-input-wrapper',
-      );
-      inputWrapper.style.display = 'none';
+      )?.closest('.engraving-section');
 
-      // Update the button text
-      const addButton = engravingSection.querySelector('.add-engraving-button');
-      addButton.textContent = engravingText
-        ? 'Edit Engraving'
-        : 'Add Engraving';
+      if (engravingSection) {
+        const inputWrapper = engravingSection.querySelector(
+          '.engraving-input-wrapper',
+        );
+        if (inputWrapper) inputWrapper.style.display = 'none';
+
+        // Update the button text
+        const addButton = engravingSection.querySelector(
+          '.add-engraving-button',
+        );
+        if (addButton) {
+          addButton.textContent = engravingText
+            ? 'Edit Engraving'
+            : 'Add Engraving';
+        }
+      }
     } catch (error) {
       console.error('Error saving engraving:', error);
       // Show error state
       const saveButton = this.querySelector(
         `[data-item-key="${itemKey}"].save-engraving-button`,
       );
-      saveButton.textContent = 'Error - Try Again';
-      setTimeout(() => {
-        saveButton.textContent = 'Save Engraving';
-        saveButton.disabled = false;
-      }, 2000);
+      if (saveButton) {
+        saveButton.textContent = 'Error - Try Again';
+        setTimeout(() => {
+          saveButton.textContent = 'Save Engraving';
+          saveButton.disabled = false;
+        }, 2000);
+      }
     }
   }
-
   setHeaderCartIconAccessibility() {
     const cartLink = document.querySelector('#cart-icon-bubble');
     if (!cartLink) return;
