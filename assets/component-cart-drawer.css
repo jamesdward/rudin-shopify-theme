@@ -17,7 +17,7 @@
 
 .drawer__inner {
   height: 100%;
-  width: 40rem;
+  width: 68rem;
   max-width: calc(100vw - 3rem);
   padding: 0 1.5rem;
   border: 0.1rem solid rgba(var(--color-foreground), 0.2);
@@ -410,4 +410,78 @@ cart-drawer-items::-webkit-scrollbar-track-piece {
   .cart-drawer .cart-item__error {
     margin-left: 0;
   }
+}
+
+/* Hide the engraving fee product image */
+.cart-item__media[data-engraving-fee] {
+  display: none;
+}
+
+/* Style engraving fee line items */
+.cart-item[data-engraving-fee] .cart-item__details {
+  padding-left: 0;
+}
+
+.cart-item[data-engraving-fee] .cart-item__name {
+  font-size: 0.9em;
+  color: var(--color-foreground-75);
+}
+
+/* Add indent for engraving fee */
+.cart-item[data-engraving-fee] {
+  margin-left: 2rem;
+  border-left: 2px solid var(--color-border);
+}
+
+/* Style engraving line items */
+.cart-item[data-engraving] {
+  position: relative;
+  padding-left: 30px;
+  border-left: 2px solid rgba(0, 0, 0, 0.1);
+  margin-left: 15px;
+}
+
+.cart-item[data-engraving]::before {
+  content: '🖋️ Engraving for:';
+  position: absolute;
+  left: 5px;
+  top: 10px;
+  font-size: 0.8em;
+  color: #666;
+}
+
+.cart-item[data-engraving] .cart-item__media {
+  display: none;
+}
+
+/* Parent item */
+.cart-item[data-has-engraving] {
+  position: relative;
+  padding-bottom: 15px;
+}
+
+/* Engraving item styling */
+.cart-item[data-is-engraving] {
+  background: #f9f9f9;
+  margin-left: 30px;
+  border-left: 2px solid #ddd;
+  padding-left: 10px;
+}
+
+.cart-item[data-is-engraving] .cart-item__media {
+  display: none;
+}
+
+.cart-item[data-is-engraving]::before {
+  content: '✎ Engraving';
+  position: absolute;
+  left: -60px;
+  top: 15px;
+  font-size: 12px;
+  color: #666;
+}
+
+/* Ensure price displays */
+.cart-item[data-is-engraving] .cart-item__price-wrapper {
+  display: block !important;
 }

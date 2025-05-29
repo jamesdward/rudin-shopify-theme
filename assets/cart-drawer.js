@@ -111,88 +111,112 @@ class CartDrawer extends HTMLElement {
     this.saveEngraving(itemKey, input.value);
   }
   async saveEngraving(itemKey, engravingText) {
+    const saveButton = this.querySelector(
+      `[data-item-key="${itemKey}"].save-engraving-button`,
+    );
+    if (!saveButton) return;
+
+    const originalText = saveButton.textContent;
+    saveButton.textContent = 'Saving...';
+    saveButton.disabled = true;
+
+    console.log('engravingConfig', window.engravingConfig);
     try {
-      console.log('Saving engraving:', { itemKey, engravingText });
+      // Verify engraving data is loaded
+      if (!window.engravingConfig.variantId) {
+        throw new Error('Engraving service not loaded - please wait');
+      }
 
-      // Show loading state
-      const saveButton = this.querySelector(
-        `[data-item-key="${itemKey}"].save-engraving-button`,
+      // Get current cart state
+      const cart = await (await fetch('/cart.js')).json();
+      const parentItem = cart.items.find((item) => item.key === itemKey);
+      if (!parentItem) throw new Error('Parent item not found');
+
+      // Find ALL existing engravings for this item
+      const existingEngravings = cart.items.filter(
+        (item) =>
+          item.properties?._ParentItem === itemKey &&
+          item.id === window.engravingConfig.variantId,
       );
-      const originalText = saveButton.textContent;
-      saveButton.textContent = 'Saving...';
-      saveButton.disabled = true;
 
-      // Update the cart item
-      const response = await fetch('/cart/change.js', {
+      // Remove ALL existing engravings first
+      for (const engraving of existingEngravings) {
+        await fetch('/cart/change.js', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            id: engraving.key,
+            quantity: 0,
+          }),
+        });
+      }
+
+      // If we have engraving text, add exactly ONE new engraving
+      if (engravingText) {
+        await fetch('/cart/add.js', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            items: [
+              {
+                quantity: 1,
+                id: window.engravingConfig.variantId,
+                properties: {
+                  _ParentItem: itemKey,
+                  'Engraving Text': engravingText,
+                  'For Product':
+                    parentItem.product_title || parentItem.title || 'Item',
+                  _CreatedAt: Date.now(), // Helps identify newest engraving
+                },
+              },
+            ],
+          }),
+        });
+      }
+
+      // Update parent item properties
+      await fetch('/cart/change.js', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           id: itemKey,
           properties: {
-            Engraving: engravingText,
+            Engraving: engravingText || null,
           },
         }),
       });
 
-      const cart = await response.json();
-      console.log('Cart response:', cart);
-
-      // Update the cart drawer - improved approach
-      const sectionsResponse = await fetch('/?sections=cart-drawer');
-      const sections = await sectionsResponse.json();
-
-      // Check if we got the cart-drawer section
-      if (sections['cart-drawer']) {
-        // Parse the HTML properly
-        const parser = new DOMParser();
-        const doc = parser.parseFromString(
-          sections['cart-drawer'],
-          'text/html',
-        );
-        const newCartDrawer = doc.querySelector('cart-drawer');
-
-        if (newCartDrawer) {
-          // Replace the content
-          this.innerHTML = newCartDrawer.innerHTML;
-          this.setupEngravingHandlers(); // Re-setup handlers after content update
-        }
-      }
-
-      // Hide the input wrapper
-      const engravingSection = this.querySelector(
-        `[data-item-key="${itemKey}"]`,
-      )?.closest('.engraving-section');
-
-      if (engravingSection) {
-        const inputWrapper = engravingSection.querySelector(
-          '.engraving-input-wrapper',
-        );
-        if (inputWrapper) inputWrapper.style.display = 'none';
-
-        // Update the button text
-        const addButton = engravingSection.querySelector(
-          '.add-engraving-button',
-        );
-        if (addButton) {
-          addButton.textContent = engravingText
-            ? 'Edit Engraving'
-            : 'Add Engraving';
-        }
-      }
+      // Refresh UI
+      await this.updateCartDrawer();
+      saveButton.textContent = engravingText
+        ? 'Edit Engraving'
+        : 'Add Engraving';
     } catch (error) {
-      console.error('Error saving engraving:', error);
-      // Show error state
-      const saveButton = this.querySelector(
-        `[data-item-key="${itemKey}"].save-engraving-button`,
-      );
-      if (saveButton) {
-        saveButton.textContent = 'Error - Try Again';
-        setTimeout(() => {
-          saveButton.textContent = 'Save Engraving';
-          saveButton.disabled = false;
-        }, 2000);
+      console.error('Engraving error:', error);
+      saveButton.textContent = 'Error - Try Again';
+    } finally {
+      saveButton.disabled = false;
+      setTimeout(() => {
+        if (saveButton.textContent === 'Error - Try Again') {
+          saveButton.textContent = originalText;
+        }
+      }, 2000);
+    }
+  }
+  async updateCartDrawer() {
+    const sectionsResponse = await fetch('/?sections=cart-drawer');
+    const sections = await sectionsResponse.json();
+
+    if (sections['cart-drawer']) {
+      const parser = new DOMParser();
+      const doc = parser.parseFromString(sections['cart-drawer'], 'text/html');
+      const newCartDrawer = doc.querySelector('cart-drawer');
+
+      if (newCartDrawer) {
+        this.innerHTML = newCartDrawer.innerHTML;
+        if (this.setupEngravingHandlers) {
+          this.setupEngravingHandlers();
+        }
       }
     }
   }
