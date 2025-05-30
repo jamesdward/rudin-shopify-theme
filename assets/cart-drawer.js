@@ -140,16 +140,16 @@ class CartDrawer extends HTMLElement {
       );
 
       // Remove ALL existing engravings first
-      for (const engraving of existingEngravings) {
-        await fetch('/cart/change.js', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            id: engraving.key,
-            quantity: 0,
-          }),
-        });
-      }
+      // for (const engraving of existingEngravings) {
+      //   await fetch('/cart/change.js', {
+      //     method: 'POST',
+      //     headers: { 'Content-Type': 'application/json' },
+      //     body: JSON.stringify({
+      //       id: engraving.key,
+      //       quantity: 0,
+      //     }),
+      //   });
+      // }
 
       // If we have engraving text, add exactly ONE new engraving
       if (engravingText) {
@@ -175,16 +175,16 @@ class CartDrawer extends HTMLElement {
       }
 
       // Update parent item properties
-      await fetch('/cart/change.js', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          id: itemKey,
-          properties: {
-            Engraving: engravingText || null,
-          },
-        }),
-      });
+      // await fetch('/cart/change.js', {
+      //   method: 'POST',
+      //   headers: { 'Content-Type': 'application/json' },
+      //   body: JSON.stringify({
+      //     id: itemKey,
+      //     properties: {
+      //       Engraving: engravingText || null,
+      //     },
+      //   }),
+      // });
 
       // Refresh UI
       await this.updateCartDrawer();
