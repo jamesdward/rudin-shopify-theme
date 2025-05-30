@@ -49,6 +49,40 @@ class CartDrawer extends HTMLElement {
     // Add the document click handler
     document.addEventListener('click', this._handleDocumentClick);
     this._handlersSetup = true;
+
+    // Prevent cart form submission from engraving input
+    const cartForm = document.getElementById('CartDrawer-Form');
+    if (cartForm && !cartForm._engravingHandlerAdded) {
+      cartForm.addEventListener('submit', function (e) {
+        // If the active element or the last blurred element is an engraving input, prevent submit
+        const active = document.activeElement;
+        if (
+          active &&
+          active.classList &&
+          active.classList.contains('engraving-input')
+        ) {
+          e.preventDefault();
+          return false;
+        }
+        // Also check if the submit was triggered by blur from engraving input
+        if (window._engravingInputJustBlurred) {
+          e.preventDefault();
+          window._engravingInputJustBlurred = false;
+          return false;
+        }
+      });
+      // Mark as added so we don't add multiple listeners
+      cartForm._engravingHandlerAdded = true;
+    }
+    // Track blur on engraving input
+    document.querySelectorAll('.engraving-input').forEach((input) => {
+      input.addEventListener('blur', function () {
+        window._engravingInputJustBlurred = true;
+        setTimeout(() => {
+          window._engravingInputJustBlurred = false;
+        }, 100);
+      });
+    });
   }
 
   handleEngravingClick(event) {
@@ -89,8 +123,40 @@ class CartDrawer extends HTMLElement {
       // Focus the input if showing
       if (isHidden && input) {
         input.focus();
+
+        // Set up character count display
+        const charCount = inputWrapper.querySelector(
+          '.engraving-char-count .current-chars',
+        );
+        if (charCount) {
+          // Initialize with current value length
+          charCount.textContent = input.value.length;
+
+          // Remove any existing listeners to prevent duplicates
+          input.removeEventListener('input', updateCharCount);
+
+          // Add new listener
+          input.addEventListener('input', updateCharCount);
+        }
+
+        // Prevent form submission on Enter
+        input.addEventListener('keydown', function (e) {
+          if (e.key === 'Enter') {
+            e.preventDefault();
+          }
+        });
       }
     }, 0);
+
+    // Function to update character count
+    function updateCharCount(e) {
+      const charCount = inputWrapper.querySelector(
+        '.engraving-char-count .current-chars',
+      );
+      if (charCount) {
+        charCount.textContent = e.target.value.length;
+      }
+    }
   }
 
   handleSaveClick(event) {

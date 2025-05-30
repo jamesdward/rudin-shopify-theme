@@ -231,41 +231,9 @@
                               {%- endfor -%}
                             </dl>
 
-                            {% if item.properties._ParentItem %}
-                            {% else %}
-                              <div class='engraving-section'>
-                                {% if item.properties.Engraving %}
-                                {% else %}
-                                  <button
-                                    type='button'
-                                    class='button button--secondary button--full-width add-engraving-button'
-                                    data-item-key='{{ item.key }}'
-                                  >
-                                    {% if item.properties.Engraving %}
-                                      Edit Engraving
-                                    {% else %}
-                                      Add Engraving
-                                    {% endif %}
-                                  </button>
-                                {% endif %}
+                            <!-- Engraving section placeholder -->
+                            <div id='engraving-section-placeholder-{{ item.key }}'></div>
 
-                                <div class='engraving-input-wrapper' style='display: none;'>
-                                  <input
-                                    type='text'
-                                    class='engraving-input'
-                                    placeholder='Enter engraving text...'
-                                    value='{{ item.properties.Engraving }}'
-                                  >
-                                  <button
-                                    type='button'
-                                    class='button button--primary button--full-width save-engraving-button'
-                                    data-item-key='{{ item.key }}'
-                                  >
-                                    Save Engraving
-                                  </button>
-                                </div>
-                              </div>
-                            {% endif %}
                             <p class='product-option'>{{ item.selling_plan_allocation.selling_plan.name }}</p>
                           {%- endif -%}
 
@@ -281,6 +249,59 @@
                               </li>
                             {%- endfor -%}
                           </ul>
+
+                          {% if item.properties._ParentItem %}
+                          {% else %}
+                            <div class='engraving-section'>
+                              {% assign has_engraving = false %}
+                              {% for cart_item in cart.items %}
+                                {% if cart_item.properties._ParentItem == item.key %}
+                                  {% assign has_engraving = true %}
+                                  {% break %}
+                                {% endif %}
+                              {% endfor %}
+                              {% if has_engraving %}
+                              {% else %}
+                                <button
+                                  type='button'
+                                  class='button button--secondary button--full-width add-engraving-button'
+                                  data-item-key='{{ item.key }}'
+                                >
+                                  {% if item.properties.Engraving %}
+                                    Edit Engraving
+                                  {% else %}
+                                    Add Engraving
+                                  {% endif %}
+                                </button>
+                              {% endif %}
+
+                              <div class='engraving-input-wrapper' style='display: none;'>
+                                <input
+                                  type='text'
+                                  class='engraving-input'
+                                  placeholder='Enter engraving text...'
+                                  value='{{ item.properties.Engraving }}'
+                                  maxlength='20'
+                                  data-max-length='20'
+                                  data-engraving-input
+                                  inputmode='text'
+                                  pattern='.*'
+                                  autocomplete='off'
+                                  autocorrect='off'
+                                >
+                                <div class='engraving-char-count'>
+                                  <span class='current-chars'>0</span>/<span class='max-chars'>20</span> characters
+                                </div>
+                                <button
+                                  type='button'
+                                  class='button button--primary button--full-width save-engraving-button'
+                                  data-item-key='{{ item.key }}'
+                                >
+                                  Save Engraving
+                                </button>
+                              </div>
+                            </div>
+                          {% endif %}
                         </td>
 
                         <td class='cart-item__totals right' role='cell' headers='CartDrawer-ColumnTotal'>

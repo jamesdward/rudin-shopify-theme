@@ -462,7 +462,6 @@ cart-drawer-items::-webkit-scrollbar-track-piece {
 
 /* Engraving item styling */
 .cart-item[data-is-engraving] {
-  background: #f9f9f9;
   margin-left: 30px;
   border-left: 2px solid #ddd;
   padding-left: 10px;
@@ -484,4 +483,28 @@ cart-drawer-items::-webkit-scrollbar-track-piece {
 /* Ensure price displays */
 .cart-item[data-is-engraving] .cart-item__price-wrapper {
   display: block !important;
+}
+
+/* Engraving input styles */
+.engraving-input-wrapper {
+  margin-top: 1rem;
+}
+
+.engraving-input {
+  width: 100%;
+  padding: 0.75rem;
+  margin-bottom: 0.5rem;
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+}
+
+.engraving-char-count {
+  font-size: 0.8em;
+  color: var(--color-foreground-75);
+  text-align: right;
+  margin-bottom: 0.5rem;
+}
+
+.engraving-char-count .current-chars {
+  font-weight: bold;
 }
