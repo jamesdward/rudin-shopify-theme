@@ -20,17 +20,17 @@ class CartRemoveButton extends HTMLElement {
       event.preventDefault();
 
       let lineIndex = parseInt(this.dataset.index, 10) - 1;
-      console.log('dave line index', lineIndex);
+      // console.log('dave line index', lineIndex);
 
       try {
         const response = await fetch('/cart.js');
         const cart = await response.json();
 
-        console.log('dave cart', cart);
+        // console.log('dave cart', cart);
 
         const parentItem = cart.items[lineIndex];
         if (!parentItem?.key) return;
-        console.log('dave parent key', parentItem.key);
+        // console.log('dave parent key', parentItem.key);
         const parentKey = parentItem.key;
 
         for (const item of cart.items) {
@@ -38,7 +38,7 @@ class CartRemoveButton extends HTMLElement {
             item.properties?._ParentItem === parentKey &&
             item.id !== parentKey
           ) {
-            console.log('removing engraving linked to parent');
+            // console.log('removing engraving linked to parent');
             await fetch('/cart/change.js', {
               method: 'POST',
               headers: { 'Content-Type': 'application/json' },
@@ -48,7 +48,7 @@ class CartRemoveButton extends HTMLElement {
           }
         }
       } catch (error) {
-        console.error('err removing items', error);
+        // console.error('err removing items', error);
       }
 
       const cartItems =
@@ -240,7 +240,7 @@ class CartItems extends HTMLElement {
           document.getElementById(`Quantity-${line}`) ||
           document.getElementById(`Drawer-quantity-${line}`);
         const items = document.querySelectorAll('.cart-item');
-        console.log('dave', items);
+        // console.log('dave', items);
 
         if (parsedState.errors) {
           quantityElement.value = quantityElement.getAttribute('value');
