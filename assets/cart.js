@@ -69,7 +69,8 @@ class CartItems extends HTMLElement {
       return;
     }
 
-    const inputValue = parseInt(event.target.value);
+    const target = event.target;
+    const inputValue = parseInt(target.value);
     const index = event.target.dataset.index;
     let message = '';
 
