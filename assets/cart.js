@@ -1,12 +1,60 @@
+// class CartRemoveButton extends HTMLElement {
+//   constructor() {
+//     super();
+
+//     this.addEventListener('click', (event) => {
+//       event.preventDefault();
+//       const cartItems =
+//         this.closest('cart-items') || this.closest('cart-drawer-items');
+//       cartItems.updateQuantity(this.dataset.index, 0);
+//       console.log('dave', cartItems);
+//     });
+//   }
+// }
+
 class CartRemoveButton extends HTMLElement {
   constructor() {
     super();
 
-    this.addEventListener('click', (event) => {
+    this.addEventListener('click', async (event) => {
       event.preventDefault();
+
+      let lineIndex = parseInt(this.dataset.index, 10) - 1;
+      // console.log('dave line index', lineIndex);
+
+      try {
+        const response = await fetch('/cart.js');
+        const cart = await response.json();
+
+        // console.log('dave cart', cart);
+
+        const parentItem = cart.items[lineIndex];
+        if (!parentItem?.key) return;
+        // console.log('dave parent key', parentItem.key);
+        const parentKey = parentItem.key;
+
+        for (const item of cart.items) {
+          if (
+            item.properties?._ParentItem === parentKey &&
+            item.id !== parentKey
+          ) {
+            // console.log('removing engraving linked to parent');
+            await fetch('/cart/change.js', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ id: item.key, quantity: 0 }),
+            });
+            lineIndex--;
+          }
+        }
+      } catch (error) {
+        // console.error('err removing items', error);
+      }
+
       const cartItems =
         this.closest('cart-items') || this.closest('cart-drawer-items');
-      cartItems.updateQuantity(this.dataset.index, 0);
+      await cartItems.updateQuantity(lineIndex + 1, 0);
+      cartItems.onCartUpdate();
     });
   }
 }
@@ -61,7 +109,16 @@ class CartItems extends HTMLElement {
   }
 
   validateQuantity(event) {
-    const inputValue = parseInt(event.target.value);
+    if (
+      target.type !== 'number' ||
+      !target.hasAttribute('step') ||
+      !target.dataset.index
+    ) {
+      return;
+    }
+
+    const target = event.target;
+    const inputValue = parseInt(target.value);
     const index = event.target.dataset.index;
     let message = '';
 
@@ -163,7 +220,7 @@ class CartItems extends HTMLElement {
     ];
   }
 
-  updateQuantity(line, quantity, name, variantId) {
+  async updateQuantity(line, quantity, name, variantId) {
     this.enableLoading(line);
 
     const body = JSON.stringify({
@@ -183,6 +240,7 @@ class CartItems extends HTMLElement {
           document.getElementById(`Quantity-${line}`) ||
           document.getElementById(`Drawer-quantity-${line}`);
         const items = document.querySelectorAll('.cart-item');
+        // console.log('dave', items);
 
         if (parsedState.errors) {
           quantityElement.value = quantityElement.getAttribute('value');
