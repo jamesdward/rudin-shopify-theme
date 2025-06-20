@@ -471,14 +471,14 @@ cart-drawer-items::-webkit-scrollbar-track-piece {
   display: none;
 }
 
-.cart-item[data-is-engraving]::before {
+/* .cart-item[data-is-engraving]::before {
   content: '✎ Engraving';
   position: absolute;
   left: -60px;
   top: 15px;
   font-size: 12px;
   color: #666;
-}
+} */
 
 /* Ensure price displays */
 .cart-item[data-is-engraving] .cart-item__price-wrapper {
