@@ -120,6 +120,27 @@
     transition: transform 0.2s ease-out;
   }
 
+  /* Logo handling */
+  .header__heading-logo-wrapper {
+    position: relative;
+  }
+
+  .header__heading-logo {
+    transition: opacity 0.2s ease-out;
+  }
+
+  /* Default state for non-homepage pages */
+  .default-logo {
+    opacity: 1;
+  }
+
+  .light-logo {
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
   /* Home page specific styles */
   {% if request.page_type == 'index' %}
     .header-wrapper {
@@ -131,24 +152,12 @@
       top: var(--announcement-bar-height, 0px);
     }
 
-    /* Logo handling */
-    .header__heading-logo-wrapper {
-      position: relative;
-    }
-
-    .header__heading-logo {
-      transition: opacity 0.2s ease-out;
-    }
-
     .default-logo {
       opacity: 0;
     }
 
     .light-logo {
       opacity: 1;
-      position: absolute;
-      top: 0;
-      left: 0;
     }
 
     .header-wrapper.scrolled .default-logo {
