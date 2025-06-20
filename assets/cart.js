@@ -61,6 +61,14 @@ class CartItems extends HTMLElement {
   }
 
   validateQuantity(event) {
+    if (
+      target.type !== 'number' ||
+      !target.hasAttribute('step') ||
+      !target.dataset.index
+    ) {
+      return;
+    }
+
     const inputValue = parseInt(event.target.value);
     const index = event.target.dataset.index;
     let message = '';
