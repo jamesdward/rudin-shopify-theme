@@ -55,6 +55,44 @@
           {% endif %}
           class='product-variant-id'
         >
+        <!-- Engraving Field -->
+        <div style='margin-bottom: 1rem;'>
+          <label for='add-engraving' style='display: flex; align-items: center; gap: 0.5rem; cursor: pointer;'>
+            <input
+              type='checkbox'
+              id='add-engraving'
+              name='add_engraving'
+              style='width: 16px; height: 16px;'
+              onchange="
+                const container = document.getElementById('engraving-container');
+                const input = document.getElementById('engraving');
+                container.style.display = this.checked ? 'flex' : 'none';
+                input.disabled = !this.checked;
+              "
+            >
+            Add Engraving (+{{ 10000 | money }})
+          </label>
+        </div>
+
+        <!-- Engraving Field (initially hidden) -->
+        <div
+          id='engraving-container'
+          class='product-form__input product-form__input--engraving'
+          style='display: none; flex-direction: column; gap: 10px;'
+        >
+          <label for='engraving' class='text-sm font-medium text-gray-700'></label>
+          <input
+            type='text'
+            id='engraving'
+            name='properties[Engraving]'
+            class='input'
+            style='border: black solid 1px; padding: 1rem;'
+            placeholder='Engraving Text (max 20 characters)'
+            maxlength='20'
+            minLength='1'
+            disabled
+          >
+        </div>
 
         {%- if gift_card_recipient_feature_active -%}
           {%- render 'gift-card-recipient-form', product: product, form: form, section: section -%}
@@ -148,4 +186,31 @@
 
     <script src='{{ 'pickup-availability.js' | asset_url }}' defer='defer'></script>
   {%- endif -%}
+
+  {% comment %} Script to disable the add to cart button if add engraving is checked with no input text {% endcomment %}
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const addEngravingCheckbox = document.getElementById('add-engraving');
+      const engravingInput = document.getElementById('engraving');
+      const addToCartButton = document.getElementById('ProductSubmitButton-{{ section.id }}');
+
+      function toggleAddToCart() {
+        if (addEngravingCheckbox.checked) {
+          addToCartButton.disabled = engravingInput.value.trim() === '';
+        } else {
+          addToCartButton.disabled = false;
+        }
+      }
+
+      // Init state
+      toggleAddToCart();
+
+      addEngravingCheckbox.addEventListener('change', () => {
+        // Show/hide engraving input is handled in your inline onchange
+        toggleAddToCart();
+      });
+
+      engravingInput.addEventListener('input', toggleAddToCart);
+    });
+  </script>
 </div>
