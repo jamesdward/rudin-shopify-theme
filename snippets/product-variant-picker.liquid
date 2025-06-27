@@ -44,7 +44,12 @@
         </fieldset>
       {%- elsif picker_type == 'button' -%}
         <fieldset class='js product-form__input product-form__input--pill'>
-          <legend class='form__label'>{{ option.name }}</legend>
+          <legend class='form__label'>
+            {{ option.name }}
+            {% if option.name == 'Engraved' %}
+              <span class='engraving-price-placeholder' data-price-usd='100'>(+$100.00)</span>
+            {% endif %}
+          </legend>
           {% render 'product-variant-options',
             product: product,
             option: option,
