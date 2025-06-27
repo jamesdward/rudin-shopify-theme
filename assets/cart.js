@@ -109,13 +109,13 @@ class CartItems extends HTMLElement {
   }
 
   validateQuantity(event) {
-    if (
-      target.type !== 'number' ||
-      !target.hasAttribute('step') ||
-      !target.dataset.index
-    ) {
-      return;
-    }
+    // if (
+    //   target.type !== 'number' ||
+    //   !target.hasAttribute('step') ||
+    //   !target.dataset.index
+    // ) {
+    //   return;
+    // }
 
     const target = event.target;
     const inputValue = parseInt(target.value);
