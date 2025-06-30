@@ -47,7 +47,7 @@
           <legend class='form__label'>
             {{ option.name }}
             {% if option.name == 'Engraved' %}
-              <span class='engraving-price-placeholder' data-price-usd='100'>(+$100.00)</span>
+              <span id='engraving-price-placeholder' data-price-usd='100'></span>
             {% endif %}
           </legend>
           {% render 'product-variant-options',
@@ -172,6 +172,48 @@
         childList: true,
         subtree: true,
       });
+    });
+  </script>
+
+  <script>
+    function formatMoney(cents, currency) {
+      return new Intl.NumberFormat(undefined, {
+        style: 'currency',
+        currency: currency,
+      }).format(cents / 100);
+    }
+
+    function keepEngravingPrice() {
+      const engravingPrice = document.getElementById('engraving-price-placeholder');
+      if (!engravingPrice || engravingPrice.dataset.converted === 'true') return;
+
+      const usdPrice = parseFloat(engravingPrice.dataset.priceUsd);
+      const currentCurrency = Shopify.currency?.active || Shopify.currency?.currentCurrency || 'USD';
+      const conversionRate = Shopify.currency?.rate || 1;
+
+      const localPrice = Math.ceil(usdPrice * conversionRate);
+
+      engravingPrice.textContent = `( +${formatMoney(localPrice * 100, currentCurrency)} )`;
+      engravingPrice.dataset.converted = 'true'; // Prevent re-conversion
+    }
+
+    function observeEngravingPrice(section) {
+      const observer = new MutationObserver(() => {
+        keepEngravingPrice();
+      });
+
+      observer.observe(section, {
+        childList: true,
+        subtree: true,
+      });
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const section = document.querySelector('[data-section]');
+      if (section) {
+        keepEngravingPrice();
+        observeEngravingPrice(section);
+      }
     });
   </script>
 {%- endunless -%}
