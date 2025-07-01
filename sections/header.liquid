@@ -195,6 +195,21 @@
       color: rgb(var(--color-foreground)) !important;
     }
 
+    .header-wrapper .disclosure__button.localization-form__select,
+    .header-wrapper .disclosure__button span,
+    .header-wrapper .disclosure__button svg {
+      color: rgb(255, 255, 255) !important;
+      fill: currentColor;
+      transition: color 0.2s ease-out, fill 0.2s ease-out;
+    }
+
+    .header-wrapper.scrolled .disclosure__button.localization-form__select,
+    .header-wrapper.scrolled .disclosure__button span,
+    .header-wrapper.scrolled .disclosure__button svg {
+      color: rgb(var(--color-foreground)) !important;
+      fill: currentColor;
+    }
+
     /* Add padding to first section to account for announcement bar only */
     .shopify-section:first-of-type {
       {% comment %} padding-top: var(--announcement-bar-height, 0px); {% endcomment %}
@@ -392,7 +407,9 @@
           <localization-form class='small-hide medium-hide' data-prevent-hide>
             {%- form 'localization', id: 'HeaderCountryForm', class: 'localization-form' -%}
               <div>
-                <h2 class='visually-hidden' id='HeaderCountryLabel'>{{ 'localization.country_label' | t }}</h2>
+                <h2 class='visually-hidden' id='HeaderCountryLabel'>
+                  {{ 'localization.country_label' | t }}
+                </h2>
                 {%- render 'country-localization', localPosition: 'HeaderCountry' -%}
               </div>
             {%- endform -%}
