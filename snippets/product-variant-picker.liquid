@@ -15,6 +15,7 @@
     {{ block.shopify_attributes }}
   >
     {%- for option in product.options_with_values -%}
+      <!-- {{ option | json }} -->
       {%- liquid
         assign swatch_count = option.values | map: 'swatch' | compact | size
         assign picker_type = block.settings.picker_type
@@ -116,7 +117,7 @@
     function setupEngravingLogic() {
       const engravingContainer = document.getElementById('engraving-container');
       const engravingTextInput = document.getElementById('engravingText');
-      const engravingInputs = document.querySelectorAll('input[name*="Engraved"]');
+      const engravingInputs = document.querySelectorAll('input[name*="Add Engraving?"]');
       const addToCartButton = document.getElementById('ProductSubmitButton-{{ section.id }}');
 
       if (!engravingContainer || !engravingInputs.length || !addToCartButton) return;
