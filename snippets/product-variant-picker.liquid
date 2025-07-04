@@ -47,7 +47,8 @@
         <fieldset class='js product-form__input product-form__input--pill'>
           <legend class='form__label'>
             {{ option.name }}
-            {% if option.name == 'Engraved' %}
+            {% comment %} Need a safer way of checking if its engraved other than option.name {% endcomment %}
+            {% if option.name == 'Add Engraving?' %}
               <span id='engraving-price-placeholder' data-price-usd='100'></span>
             {% endif %}
           </legend>
@@ -104,7 +105,7 @@
       type='text'
       id='engravingText'
       name='properties[Engraving]'
-      placeholder='Engraving Text (max 20 characters)'
+      placeholder='Enter Text (20 Character Limit)'
       maxlength='20'
       minlength='1'
       form='product-form-template--16947902218288__main'
@@ -114,47 +115,64 @@
   </fieldset>
 
   <script>
+    // Map variant IDs to engraving metafield string values
+    window.variantEngravingData = {
+      {% for variant in product.variants %}
+        "{{ variant.id }}": "{{ variant.metafields.custom.show_engraving | default: 'false' }}"{% unless forloop.last %},{% endunless %}
+      {% endfor %}
+    };
+
+    {% comment %} console.log("Variant engraving data (as strings):", window.variantEngravingData); {% endcomment %}
+
     function setupEngravingLogic() {
       const engravingContainer = document.getElementById('engraving-container');
       const engravingTextInput = document.getElementById('engravingText');
-      const engravingInputs = document.querySelectorAll('input[name*="Add Engraving?"]');
       const addToCartButton = document.getElementById('ProductSubmitButton-{{ section.id }}');
 
-      if (!engravingContainer || !engravingInputs.length || !addToCartButton) return;
+      if (!engravingContainer || !engravingTextInput || !addToCartButton) return;
 
-      function isEngravingRequired() {
-        return Array.from(engravingInputs).some((input) => input.checked && input.value === 'Yes');
+      // Get the currently selected variant ID
+      function getSelectedVariantId() {
+        const selectedVariantJson = document.querySelector('script[data-selected-variant]');
+        if (!selectedVariantJson) return null;
+
+        try {
+          const variant = JSON.parse(selectedVariantJson.innerText);
+          return variant?.id?.toString() || null;
+        } catch (e) {
+          console.error('Failed to parse selected variant JSON:', e);
+          return null;
+        }
       }
 
-      function toggleAddToCart() {
-        const engravingRequired = isEngravingRequired();
-        const inputHasText = engravingTextInput.value.trim().length > 0;
+      function isEngravingMetafieldTrue(variantId) {
+        if (!variantId) return false;
+        return window.variantEngravingData[variantId] === "true";
+      }
 
-        if (engravingRequired && !inputHasText) {
+      function handleChange() {
+        const variantId = getSelectedVariantId();
+        const engravingMetafield = isEngravingMetafieldTrue(variantId);
+
+        // Show engraving box only if metafield is "true"
+        engravingContainer.style.display = engravingMetafield ? 'flex' : 'none';
+        engravingTextInput.disabled = !engravingMetafield;
+
+        // Optional: disable Add to Cart if engraving is required but text empty
+        if (engravingMetafield && engravingTextInput.value.trim().length === 0) {
           addToCartButton.disabled = true;
         } else {
           addToCartButton.disabled = false;
         }
       }
 
-      function handleChange() {
-        const isYesSelected = isEngravingRequired();
+      engravingTextInput.addEventListener('input', handleChange);
 
-        engravingContainer.style.display = isYesSelected ? 'flex' : 'none';
-        if (engravingTextInput) {
-          engravingTextInput.disabled = !isYesSelected;
-        }
-
-        // Recheck the button state when engraving is toggled
-        toggleAddToCart();
+      // Listen for variant change events (adjust selector as needed)
+      const variantSelect = document.getElementById('variant-selects-{{ section.id }}');
+      if (variantSelect) {
+        variantSelect.addEventListener('change', handleChange);
       }
-
-      // Set up listeners
-      engravingTextInput.addEventListener('input', toggleAddToCart);
-      engravingInputs.forEach((input) => {
-        input.removeEventListener('change', handleChange); // Prevent duplicate binding
-        input.addEventListener('change', handleChange);
-      });
 
       handleChange(); // Run once on load
     }
