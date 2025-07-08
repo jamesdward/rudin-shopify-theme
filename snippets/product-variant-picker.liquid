@@ -211,7 +211,7 @@
       const currentCurrency = Shopify.currency?.active || Shopify.currency?.currentCurrency || 'USD';
       const conversionRate = Shopify.currency?.rate || 1;
 
-      const localPrice = Math.ceil(usdPrice * conversionRate);
+      const localPrice = Math.round(usdPrice * conversionRate);
 
       engravingPrice.textContent = `( +${formatMoney(localPrice * 100, currentCurrency)} )`;
       engravingPrice.dataset.converted = 'true'; // Prevent re-conversion
