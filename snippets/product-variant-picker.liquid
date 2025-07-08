@@ -47,8 +47,9 @@
         <fieldset class='js product-form__input product-form__input--pill'>
           <legend class='form__label'>
             {{ option.name }}
+            {% comment %} {% assign engraving_flag = product.metafields.custom.show_engraving_price | strip | downcase %} {% endcomment %}
             {% comment %} Need a safer way of checking if its engraved other than option.name {% endcomment %}
-            {% if option.name == 'Add Engraving?' %}
+            {% if forloop.last %}
               <span id='engraving-price-placeholder' data-price-usd='100'></span>
             {% endif %}
           </legend>
