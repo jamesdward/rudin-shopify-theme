@@ -124,103 +124,105 @@
         "padding_bottom": 12
       }
     },
-    "multicolumn_rNJf7j": {
-      "type": "multicolumn",
-      "blocks": {
-        "column_3WNCVK": {
-          "type": "column",
-          "settings": {
-            "title": "Brand value",
-            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
-            "link_label": "Learn more",
-            "link": ""
-          }
-        },
-        "column_UaEazf": {
-          "type": "column",
-          "settings": {
-            "title": "Brand value",
-            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
-            "link_label": "Learn more",
-            "link": ""
-          }
-        },
-        "column_NFqkrq": {
-          "type": "column",
-          "settings": {
-            "title": "Brand value",
-            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
-            "link_label": "Learn more",
-            "link": ""
-          }
-        },
-        "column_LafLF9": {
-          "type": "column",
-          "settings": {
-            "title": "Brand value",
-            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
-            "link_label": "Learn more",
-            "link": ""
-          }
-        }
-      },
-      "block_order": [
-        "column_3WNCVK",
-        "column_UaEazf",
-        "column_NFqkrq",
-        "column_LafLF9"
-      ],
-      "settings": {
-        "title": "",
-        "heading_size": "h1",
-        "image_width": "full",
-        "custom_image_width": 500,
-        "image_ratio": "adapt",
-        "columns_desktop": 4,
-        "column_alignment": "left",
-        "background_style": "none",
-        "button_label": "",
-        "button_link": "",
-        "color_scheme": "scheme-1",
-        "columns_mobile": "1",
-        "swipe_on_mobile": false,
-        "padding_top": 36,
-        "padding_bottom": 36,
-        "card_style": false,
-        "enable_column_max_width": false,
-        "column_max_width": 400
-      }
-    },
+  
     "image-with-text": {
       "type": "image-with-text",
       "blocks": {
         "image-with-text-0": {
           "type": "heading",
           "settings": {
-            "heading": "Character story",
+            "heading": "THE MYTH",
             "heading_size": "h1"
           }
         },
         "image-with-text-1": {
           "type": "text",
           "settings": {
-            "text": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. <br/><br/>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborumLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>",
+            "text": "<p>{{ product.metafields.custom.character_story | metafield_tag }}</p>",
             "text_style": "body"
           }
         }
       },
-      "block_order": [
-        "image-with-text-0",
-        "image-with-text-1"
-      ],
+      "block_order": ["image-with-text-0", "image-with-text-1"],
       "settings": {
-        "height": "large",
+        "image": "shopify://shop_images/52fc1202043cedf64f21fc3accfaafeb.jpg",
+        "height": "medium",
         "desktop_image_width": "medium",
         "layout": "image_first",
         "desktop_content_position": "top",
         "desktop_content_alignment": "left",
         "content_layout": "no-overlap",
-        "section_color_scheme": "",
+        "section_color_scheme": "scheme-1",
+        "color_scheme": "scheme-1",
+        "image_behavior": "none",
+        "mobile_content_alignment": "left",
+        "padding_top": 36,
+        "padding_bottom": 0
+      }
+    },
+    "image_with_text_cHcV7x": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_7zwwrr": {
+          "type": "heading",
+          "settings": {
+            "heading": "THE DESIGN STORY",
+            "heading_size": "h1"
+          }
+        },
+        "text_CjbHcz": {
+          "type": "text",
+          "settings": {
+            "text": "<p>{{ product.metafields.custom.character.value }}</p>",
+            "text_style": "body"
+          }
+        }
+      },
+      "block_order": ["heading_7zwwrr", "text_CjbHcz"],
+      "settings": {
+        "image": "shopify://shop_images/52fc1202043cedf64f21fc3accfaafeb.jpg",
+        "height": "medium",
+        "desktop_image_width": "medium",
+        "layout": "text_first",
+        "desktop_content_position": "top",
+        "desktop_content_alignment": "left",
+        "content_layout": "no-overlap",
+        "section_color_scheme": "scheme-1",
+        "color_scheme": "scheme-1",
+        "image_behavior": "none",
+        "mobile_content_alignment": "left",
+        "padding_top": 36,
+        "padding_bottom": 0
+      }
+    },
+    "image_with_text_UfDXqb": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_nyfdpY": {
+          "type": "heading",
+          "settings": {
+            "heading": "THE ARTWORK",
+            "heading_size": "h1"
+          }
+        },
+        "text_Chr96J": {
+          "type": "text",
+          "settings": {
+            "text": "<p>{{ product.metafields.custom.artwork | metafield_tag }}</p>",
+            "text_style": "body"
+          }
+        }
+      },
+      "block_order": ["heading_nyfdpY", "text_Chr96J"],
+      "settings": {
+        "image": "shopify://shop_images/52fc1202043cedf64f21fc3accfaafeb.jpg",
+        "height": "medium",
+        "desktop_image_width": "medium",
+        "layout": "image_first",
+        "desktop_content_position": "top",
+        "desktop_content_alignment": "left",
+        "content_layout": "no-overlap",
+        "section_color_scheme": "scheme-1",
         "color_scheme": "scheme-1",
         "image_behavior": "none",
         "mobile_content_alignment": "left",
@@ -249,8 +251,9 @@
   },
   "order": [
     "main",
-    "multicolumn_rNJf7j",
     "image-with-text",
+    "image_with_text_cHcV7x",
+    "image_with_text_UfDXqb",
     "related-products"
   ]
 }
