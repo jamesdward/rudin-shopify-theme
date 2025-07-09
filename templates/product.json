@@ -17,6 +17,12 @@
           "name": "CUPID & PSYCHE ",
           "settings": {}
         },
+        "custom_liquid_hVCNa4": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": ""
+          }
+        },
         "caption": {
           "type": "text",
           "settings": {
@@ -27,6 +33,20 @@
         "price": {
           "type": "price",
           "settings": {}
+        },
+        "custom_liquid_PQjepC": {
+          "type": "custom_liquid",
+          "disabled": true,
+          "settings": {
+            "custom_liquid": ""
+          }
+        },
+        "custom_liquid_kiRNNU": {
+          "type": "custom_liquid",
+          "disabled": true,
+          "settings": {
+            "custom_liquid": ""
+          }
         },
         "variant_picker": {
           "type": "variant_picker",
@@ -39,6 +59,12 @@
           "type": "quantity_selector",
           "settings": {}
         },
+        "custom_liquid_tDWgJk": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "{% assign days_to_add = 21 %}\n{% assign seconds_to_add = days_to_add | times: 86400 %}\n{% assign delivery_date = 'now' | date: '%s' | plus: seconds_to_add | date: '%B %-d, %Y' %}\n<p><span style=\"font-style: italic;\">Each item is handcrafted to order in Valenza, Italy by our master artisans. Expected delivery by {{ delivery_date }}.</br><span></p>"
+          }
+        },
         "buy_buttons": {
           "type": "buy_buttons",
           "settings": {
@@ -46,44 +72,49 @@
             "show_gift_card_recipient": true
           }
         },
+        "text_YAG8kt": {
+          "type": "text",
+          "disabled": true,
+          "settings": {
+            "text": "OR CONTACT US FOR A RESPONSE NO LATER THAN 24H",
+            "text_style": "uppercase"
+          }
+        },
+        "custom_liquid_QB9PWD": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": ""
+          }
+        },
         "description": {
           "type": "description",
           "name": "LIMITED EDITION OF 200 PIECES",
           "settings": {}
         },
-        "collapsible-row-0": {
-          "type": "collapsible_tab",
-          "settings": {
-            "heading": "DETAILS",
-            "icon": "eye",
-            "content": "",
-            "page": ""
-          }
-        },
         "collapsible-row-1": {
           "type": "collapsible_tab",
           "settings": {
-            "heading": "Shipping & Returns",
-            "icon": "truck",
-            "content": "",
+            "heading": "DETAILS & CARE",
+            "icon": "none",
+            "content": "<ul><li>Handcrafted in 14k solid gold</li><li>D-E, VVS-VS lab-grown diamonds</li><li>Alpha earring backs, true to artisanal craftsmanship standards</li></ul>",
+            "page": ""
+          }
+        },
+        "collapsible_tab_YmgTBK": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "FREE SHIPPING WORLDWIDE",
+            "icon": "none",
+            "content": "<p>Rudin is pleased to offer free shipping worldwide on any item purchased.</p>",
             "page": ""
           }
         },
         "collapsible-row-2": {
           "type": "collapsible_tab",
           "settings": {
-            "heading": "Dimensions",
-            "icon": "ruler",
-            "content": "",
-            "page": ""
-          }
-        },
-        "collapsible-row-3": {
-          "type": "collapsible_tab",
-          "settings": {
-            "heading": "Care Instructions",
-            "icon": "heart",
-            "content": "",
+            "heading": "6 MONTH WARRANTY",
+            "icon": "none",
+            "content": "<p>Rudin is pleased to offer <strong>one complimentary repair</strong> within six months for any manufacturing defects. Please note: normal variations including normal wear and tear, improper care, storage techniques or third-party modifications do not fall under our warranty.</p>",
             "page": ""
           }
         },
@@ -96,21 +127,25 @@
       },
       "block_order": [
         "title",
+        "custom_liquid_hVCNa4",
         "caption",
         "price",
+        "custom_liquid_PQjepC",
+        "custom_liquid_kiRNNU",
         "variant_picker",
         "quantity_selector",
+        "custom_liquid_tDWgJk",
         "buy_buttons",
+        "text_YAG8kt",
+        "custom_liquid_QB9PWD",
         "description",
-        "collapsible-row-0",
         "collapsible-row-1",
-        "collapsible-row-2",
-        "collapsible-row-3",
-        "share"
+        "collapsible_tab_YmgTBK",
+        "collapsible-row-2"
       ],
       "settings": {
         "enable_sticky_info": true,
-        "color_scheme": "",
+        "color_scheme": "scheme-1",
         "media_size": "large",
         "constrain_to_viewport": false,
         "media_fit": "cover",
@@ -124,7 +159,64 @@
         "padding_bottom": 12
       }
     },
-  
+    "multicolumn_QbYhaW": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_EHWJDf": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/1.svg",
+            "title": "HIGH JEWELRY CRAFTSMANSHIP",
+            "text": "<p>Handcrafted in a family-run atelier in Valenza, Italy––the cradle of high jewelry––via the ancient lost-wax casting process</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_nPgTVz": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/2.svg",
+            "title": "BEAUTY IS SUSTAINABILITY",
+            "text": "<p>Made to order pieces in solid 14k gold and carbon-neutral lab grown diamonds, accompanied with limited edition artwork</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_iFybdL": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/3.svg",
+            "title": "FREE DELIVERY & RETURNS",
+            "text": "<p>Complimentary insured shipping and returns on all orders worldwide</p>",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": ["column_EHWJDf", "column_nPgTVz", "column_iFybdL"],
+      "disabled": true,
+      "settings": {
+        "title": "",
+        "heading_size": "h1",
+        "image_width": "custom",
+        "custom_image_width": 50,
+        "image_ratio": "adapt",
+        "columns_desktop": 3,
+        "column_alignment": "center",
+        "background_style": "none",
+        "button_label": "",
+        "button_link": "",
+        "color_scheme": "scheme-1",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 44,
+        "padding_bottom": 44,
+        "card_style": false,
+        "enable_column_max_width": false,
+        "column_max_width": 400
+      }
+    },
+
     "image-with-text": {
       "type": "image-with-text",
       "blocks": {
@@ -252,6 +344,7 @@
   "order": [
     "main",
     "image-with-text",
+    "multicolumn_QbYhaW",
     "image_with_text_cHcV7x",
     "image_with_text_UfDXqb",
     "related-products"
