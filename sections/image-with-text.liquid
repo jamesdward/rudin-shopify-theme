@@ -35,30 +35,40 @@
               style='padding-bottom: {{ 1 | divided_by: section.settings.image.aspect_ratio | times: 100 }}%;'
             {% endif %}
           >
-            {% comment %}
-              {%- if section.settings.image != blank -%}
-                {%- if section.settings.image_behavior == 'ambient' or section.settings.image_behavior == 'zoom-in' -%}
-                  {%- assign widths = '198, 432, 642, 900, 1284, 1800' -%}
-                  {%- capture sizes -%}
-                    (min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 | divided_by: 1.6667 }}px,
-                    (min-width: 750px) calc((100vw - 130px) / 1.667), calc((100vw - 50px) / 1.667)
-                  {%- endcapture -%}
-                {%- else -%}
-                  {%- assign widths = '165, 360, 535, 750, 1070, 1500' -%}
-                  {%- capture sizes -%}
-                    (min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 | divided_by: 2 }}px,
-                    (min-width: 750px) calc((100vw - 130px) / 2), calc((100vw - 50px) / 2)
-                  {%- endcapture -%}
-                {%- endif -%}
-                {{
-                  section.settings.image
-                  | image_url: width: 1500
-                  | image_tag: sizes: sizes, widths: widths, fetchpriority: fetch_priority
-                }}
+            {%- if section.settings.image != blank -%}
+              {%- if section.settings.image_behavior == 'ambient' or section.settings.image_behavior == 'zoom-in' -%}
+                {%- assign widths = '198, 432, 642, 900, 1284, 1800' -%}
+                {%- capture sizes -%}
+                        (min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 | divided_by: 1.6667 }}px,
+                        (min-width: 750px) calc((100vw - 130px) / 1.667), calc((100vw - 50px) / 1.667)
+                      {%- endcapture -%}
               {%- else -%}
-                {{ 'detailed-apparel-1' | placeholder_svg_tag: 'placeholder-svg' }}
+                {%- assign widths = '165, 360, 535, 750, 1070, 1500' -%}
+                {%- capture sizes -%}
+                        (min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 | divided_by: 2 }}px,
+                        (min-width: 750px) calc((100vw - 130px) / 2), calc((100vw - 50px) / 2)
+                      {%- endcapture -%}
               {%- endif -%}
-            {% endcomment %}
+              {{
+                section.settings.image
+                | image_url: width: 1500
+                | image_tag: sizes: sizes, widths: widths, fetchpriority: fetch_priority
+              }}
+            {%- else -%}
+              {{ 'detailed-apparel-1' | placeholder_svg_tag: 'placeholder-svg' }}
+            {%- endif -%}
+
+            {% assign test = section.settings.image %}
+            <pre>{{ test }}</pre>
+            <pre> {{ section.settings.image_metafield_key }}</pre>
+
+            {% assign image_url = product.metafields.custom.image_character_story %}
+            <pre>{{ image_url }}</pre>
+            {% assign image_file = product.metafields.custom.image_character_story %}
+
+            <pre>Raw metafield value: {{ image_file }}</pre>
+            <pre>Image URL: {{ image_file | image_url }}</pre>
+            <pre>Image Tag: {{ image_file | image_url: width: 800 | image_tag }}</pre>
           </div>
         </div>
         <div class='image-with-text__text-item grid__item'>
@@ -143,8 +153,7 @@
         { "value": "image_character_story", "label": "Character Story Image" },
         { "value": "image_character", "label": "Character Image" },
         { "value": "image_artwork", "label": "Artwork Image" }
-      ],
-      "default": "none"
+      ]
     },
     {
       "type": "select",
