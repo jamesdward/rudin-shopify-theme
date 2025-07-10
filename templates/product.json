@@ -117,12 +117,6 @@
             "content": "<p>Rudin is pleased to offer <strong>one complimentary repair</strong> within six months for any manufacturing defects. Please note: normal variations including normal wear and tear, improper care, storage techniques or third-party modifications do not fall under our warranty.</p>",
             "page": ""
           }
-        },
-        "share": {
-          "type": "share",
-          "settings": {
-            "share_label": "Share"
-          }
         }
       },
       "block_order": [
@@ -159,6 +153,46 @@
         "padding_bottom": 12
       }
     },
+    "image-with-text": {
+      "type": "image-with-text",
+      "blocks": {
+        "image-with-text-0": {
+          "type": "heading",
+          "settings": {
+            "heading": "THE MYTH",
+            "heading_size": "h1"
+          }
+        },
+        "image-with-text-1": {
+          "type": "text",
+          "settings": {
+            "text": "<p>{{ product.metafields.custom.character_story | metafield_tag }}</p>",
+            "text_style": "body",
+            "metafield_key": "none"
+          }
+        }
+      },
+      "block_order": [
+        "image-with-text-0",
+        "image-with-text-1"
+      ],
+      "settings": {
+        "image": "{{ product.metafields.custom.image_character_story.value }}",
+        "image_metafield_key": "image_character_story",
+        "height": "medium",
+        "desktop_image_width": "small",
+        "layout": "image_first",
+        "desktop_content_position": "top",
+        "desktop_content_alignment": "left",
+        "content_layout": "no-overlap",
+        "section_color_scheme": "scheme-1",
+        "color_scheme": "scheme-1",
+        "image_behavior": "none",
+        "mobile_content_alignment": "left",
+        "padding_top": 36,
+        "padding_bottom": 0
+      }
+    },
     "multicolumn_QbYhaW": {
       "type": "multicolumn",
       "blocks": {
@@ -193,7 +227,11 @@
           }
         }
       },
-      "block_order": ["column_EHWJDf", "column_nPgTVz", "column_iFybdL"],
+      "block_order": [
+        "column_EHWJDf",
+        "column_nPgTVz",
+        "column_iFybdL"
+      ],
       "disabled": true,
       "settings": {
         "title": "",
@@ -216,42 +254,6 @@
         "column_max_width": 400
       }
     },
-
-    "image-with-text": {
-      "type": "image-with-text",
-      "blocks": {
-        "image-with-text-0": {
-          "type": "heading",
-          "settings": {
-            "heading": "THE MYTH",
-            "heading_size": "h1"
-          }
-        },
-        "image-with-text-1": {
-          "type": "text",
-          "settings": {
-            "text": "<p>{{ product.metafields.custom.character_story | metafield_tag }}</p>",
-            "text_style": "body"
-          }
-        }
-      },
-      "block_order": ["image-with-text-0", "image-with-text-1"],
-      "settings": {
-        "image": "shopify://shop_images/52fc1202043cedf64f21fc3accfaafeb.jpg",
-        "height": "medium",
-        "desktop_image_width": "medium",
-        "layout": "image_first",
-        "desktop_content_position": "top",
-        "desktop_content_alignment": "left",
-        "content_layout": "no-overlap",
-        "section_color_scheme": "scheme-1",
-        "color_scheme": "scheme-1",
-        "image_behavior": "none",
-        "mobile_content_alignment": "left",
-        "padding_top": 36,
-        "padding_bottom": 0
-      }
-    },
     "image_with_text_cHcV7x": {
       "type": "image-with-text",
       "blocks": {
@@ -266,13 +268,18 @@
           "type": "text",
           "settings": {
             "text": "<p>{{ product.metafields.custom.character.value }}</p>",
-            "text_style": "body"
+            "text_style": "body",
+            "metafield_key": "none"
           }
         }
       },
-      "block_order": ["heading_7zwwrr", "text_CjbHcz"],
+      "block_order": [
+        "heading_7zwwrr",
+        "text_CjbHcz"
+      ],
       "settings": {
-        "image": "shopify://shop_images/52fc1202043cedf64f21fc3accfaafeb.jpg",
+        "image": "{{ product.metafields.custom.image_character.value }}",
+        "image_metafield_key": "image_character",
         "height": "medium",
         "desktop_image_width": "medium",
         "layout": "text_first",
@@ -301,13 +308,18 @@
           "type": "text",
           "settings": {
             "text": "<p>{{ product.metafields.custom.artwork | metafield_tag }}</p>",
-            "text_style": "body"
+            "text_style": "body",
+            "metafield_key": "none"
           }
         }
       },
-      "block_order": ["heading_nyfdpY", "text_Chr96J"],
+      "block_order": [
+        "heading_nyfdpY",
+        "text_Chr96J"
+      ],
       "settings": {
-        "image": "shopify://shop_images/52fc1202043cedf64f21fc3accfaafeb.jpg",
+        "image": "{{ product.metafields.custom.image_artwork.value }}",
+        "image_metafield_key": "image_artwork",
         "height": "medium",
         "desktop_image_width": "medium",
         "layout": "image_first",

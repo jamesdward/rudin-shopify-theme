@@ -57,18 +57,6 @@
             {%- else -%}
               {{ 'detailed-apparel-1' | placeholder_svg_tag: 'placeholder-svg' }}
             {%- endif -%}
-
-            {% assign test = section.settings.image %}
-            <pre>{{ test }}</pre>
-            <pre> {{ section.settings.image_metafield_key }}</pre>
-
-            {% assign image_url = product.metafields.custom.image_character_story %}
-            <pre>{{ image_url }}</pre>
-            {% assign image_file = product.metafields.custom.image_character_story %}
-
-            <pre>Raw metafield value: {{ image_file }}</pre>
-            <pre>Image URL: {{ image_file | image_url }}</pre>
-            <pre>Image Tag: {{ image_file | image_url: width: 800 | image_tag }}</pre>
           </div>
         </div>
         <div class='image-with-text__text-item grid__item'>
@@ -143,17 +131,6 @@
       "type": "image_picker",
       "id": "image",
       "label": "t:sections.image-with-text.settings.image.label"
-    },
-    {
-      "type": "select",
-      "id": "image_metafield_key",
-      "label": "Image Metafield",
-      "options": [
-        { "value": "none", "label": "None (use static image)" },
-        { "value": "image_character_story", "label": "Character Story Image" },
-        { "value": "image_character", "label": "Character Image" },
-        { "value": "image_artwork", "label": "Artwork Image" }
-      ]
     },
     {
       "type": "select",
