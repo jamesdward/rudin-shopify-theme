@@ -171,10 +171,12 @@
               {%- endif -%}
               {%- if block.settings.link_label != blank -%}
                 {% if section.settings.card_style and has_link %}
-                  <div class='card-style-link-label'>{{ block.settings.link_label | escape }}</div>
+                  <div class='card-style-link-label{% if block.settings.link_label_heading_style %} heading-font{% endif %}'>
+                    {{ block.settings.link_label | escape }}
+                  </div>
                 {% else %}
                   <a
-                    class='link animate-arrow'
+                    class='link animate-arrow{% if block.settings.link_label_heading_style %} heading-font{% endif %}'
                     {% if block.settings.link == blank %}
                       role='link' aria-disabled='true'
                     {% else %}
@@ -513,6 +515,13 @@
           "type": "url",
           "id": "link",
           "label": "t:sections.multicolumn.blocks.column.settings.link.label"
+        },
+        {
+          "type": "checkbox",
+          "id": "link_label_heading_style",
+          "default": false,
+          "label": "Use heading font for link label",
+          "info": "Display the link label using the heading font instead of body font"
         }
       ]
     }
