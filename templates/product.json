@@ -55,14 +55,10 @@
             "swatch_shape": "circle"
           }
         },
-        "quantity_selector": {
-          "type": "quantity_selector",
-          "settings": {}
-        },
         "custom_liquid_tDWgJk": {
           "type": "custom_liquid",
           "settings": {
-            "custom_liquid": "{% assign days_to_add = 21 %}\n{% assign seconds_to_add = days_to_add | times: 86400 %}\n{% assign delivery_date = 'now' | date: '%s' | plus: seconds_to_add | date: '%B %-d, %Y' %}\n<p><span style=\"font-style: italic;\">Each item is handcrafted to order in Valenza, Italy by our master artisans. Expected delivery by {{ delivery_date }}.</br><span></p>"
+            "custom_liquid": "{% assign days_to_add = 21 %}\n{% assign seconds_to_add = days_to_add | times: 86400 %}\n{% assign delivery_date = 'now' | date: '%s' | plus: seconds_to_add | date: '%B %-d, %Y' %}\n<p><span style=\"font-style: italic;\">Each item is handcrafted to order in Valenza, Italy by our workshop artisans. Expected delivery by {{ delivery_date }}.</br><span></p>"
           }
         },
         "buy_buttons": {
@@ -96,7 +92,7 @@
           "settings": {
             "heading": "DETAILS & CARE",
             "icon": "none",
-            "content": "<ul><li>Handcrafted in 14k solid gold</li><li>D-E, VVS-VS lab-grown diamonds</li><li>Alpha earring backs, true to artisanal craftsmanship standards</li></ul>",
+            "content": "<ul><li>Handcrafted in 14k solid Italian gold–certified recycled, always</li><li>D-E, VVS-VS lab-grown diamonds</li><li>Alpha earring backs, true to artisanal craftsmanship standards</li></ul>",
             "page": ""
           }
         },
@@ -105,16 +101,16 @@
           "settings": {
             "heading": "FREE SHIPPING WORLDWIDE",
             "icon": "none",
-            "content": "<p>Rudin is pleased to offer free shipping worldwide on any item purchased.</p>",
+            "content": "<p>Rudin is pleased to offer complimentary insured shipping worldwide on any item purchased.</p>",
             "page": ""
           }
         },
         "collapsible-row-2": {
           "type": "collapsible_tab",
           "settings": {
-            "heading": "6 MONTH WARRANTY",
+            "heading": "30 DAY RETURNS & EXCHANGES",
             "icon": "none",
-            "content": "<p>Rudin is pleased to offer <strong>one complimentary repair</strong> within six months for any manufacturing defects. Please note: normal variations including normal wear and tear, improper care, storage techniques or third-party modifications do not fall under our warranty.</p>",
+            "content": "<p>Rudin is pleased to offer returns or exchanges<strong> </strong>within 30 days from the delivery date. Nevertheless please note that rings as well as engraved or damaged creations are not eligible for returns. </p>",
             "page": ""
           }
         }
@@ -127,7 +123,6 @@
         "custom_liquid_PQjepC",
         "custom_liquid_kiRNNU",
         "variant_picker",
-        "quantity_selector",
         "custom_liquid_tDWgJk",
         "buy_buttons",
         "text_YAG8kt",
@@ -178,9 +173,8 @@
       ],
       "settings": {
         "image": "{{ product.metafields.custom.image_character_story.value }}",
-        "image_metafield_key": "image_character_story",
         "height": "medium",
-        "desktop_image_width": "small",
+        "desktop_image_width": "medium",
         "layout": "image_first",
         "desktop_content_position": "top",
         "desktop_content_alignment": "left",
@@ -279,7 +273,6 @@
       ],
       "settings": {
         "image": "{{ product.metafields.custom.image_character.value }}",
-        "image_metafield_key": "image_character",
         "height": "medium",
         "desktop_image_width": "medium",
         "layout": "text_first",
@@ -319,7 +312,6 @@
       ],
       "settings": {
         "image": "{{ product.metafields.custom.image_artwork.value }}",
-        "image_metafield_key": "image_artwork",
         "height": "medium",
         "desktop_image_width": "medium",
         "layout": "image_first",

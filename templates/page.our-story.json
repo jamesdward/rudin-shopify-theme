@@ -1,0 +1,338 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "rich_text_eEjMDL": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_8wmHcx": {
+          "type": "heading",
+          "settings": {
+            "heading": "OUR STORY",
+            "heading_size": "h1"
+          }
+        },
+        "text_8hKfHx": {
+          "type": "text",
+          "settings": {
+            "text": "<p>RUDIN is a creative House designing limited edition cultural icons, inspired by the worlds that shape human experience.  </p>"
+          }
+        },
+        "image_MBm8jP": {
+          "type": "image",
+          "disabled": true,
+          "settings": {
+            "image_position": "center",
+            "max_width": 600
+          }
+        },
+        "button_UwmNnx": {
+          "type": "button",
+          "disabled": true,
+          "settings": {
+            "button_label": "Button label",
+            "button_link": "",
+            "button_style_secondary": false,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_8wmHcx",
+        "text_8hKfHx",
+        "image_MBm8jP",
+        "button_UwmNnx"
+      ],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "scheme-5",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    },
+    "image_with_text_MB7qQT": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_HA6EjQ": {
+          "type": "heading",
+          "disabled": true,
+          "settings": {
+            "heading": "",
+            "heading_size": "h1"
+          }
+        },
+        "text_VNTWFH": {
+          "type": "text",
+          "settings": {
+            "text": "<p>The unique DNA of the House lies in its ability to draw from iconic artistic movements across history, literature and cinema to craft a distinctive design story for each piece. To faithfully achieve this, each collection is preceded by rich heritage immersion: poring over historical archives, engaging with academic scholarship, and experimenting with diverse materials and treatments.<br/><br/>Each creation is then handcrafted using solid 14k gold and carbon-neutral lab grown diamonds in our esteemed partner atelier in Valenza, Italy––the global cradle of high jewelry, working side by side with our master craftsmen. We always produce in extremely limited editions, often no more than 250 of the same style, to preserve the standing of each RUDIN creation as a unique cultural icon.<br/></p>",
+            "text_style": "body"
+          }
+        },
+        "button_6Ej3Kj": {
+          "type": "button",
+          "disabled": true,
+          "settings": {
+            "button_label": "Button label",
+            "button_link": "",
+            "button_style_secondary": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_HA6EjQ",
+        "text_VNTWFH",
+        "button_6Ej3Kj"
+      ],
+      "custom_css": [
+        "img {max-width: 600px; overflow: hidden; object-fit: cover;}",
+        "p {max-width: 600px; font-size: 1.8rem !important;}"
+      ],
+      "name": "t:sections.image-with-text.presets.name",
+      "settings": {
+        "image": "shopify://shop_images/52fc1202043cedf64f21fc3accfaafeb.jpg",
+        "height": "large",
+        "desktop_image_width": "medium",
+        "layout": "image_first",
+        "desktop_content_position": "top",
+        "desktop_content_alignment": "left",
+        "content_layout": "no-overlap",
+        "section_color_scheme": "scheme-5",
+        "color_scheme": "scheme-5",
+        "image_behavior": "none",
+        "mobile_content_alignment": "left",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "image_with_text_Xc9Gtj": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_8QEbf7": {
+          "type": "heading",
+          "settings": {
+            "heading": "OUR DESIGN DNA",
+            "heading_size": "h2"
+          }
+        },
+        "text_qM348Y": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Inspired by Henri Lefebvre's aesthetic philosophy of revolutionizing the everyday, RUDIN embodies a beauty that merges the everyday with the sublime –– fine pieces that nevertheless beckon for a closer look. The House's signature style of sensual, tactile forms and play with shape reflects an enduring desire to invite touch and surprise.</p>",
+            "text_style": "body"
+          }
+        },
+        "button_J3mLPt": {
+          "type": "button",
+          "disabled": true,
+          "settings": {
+            "button_label": "Button label",
+            "button_link": "",
+            "button_style_secondary": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_8QEbf7",
+        "text_qM348Y",
+        "button_J3mLPt"
+      ],
+      "custom_css": [
+        "img {max-width: 600px; overflow: hidden; object-fit: cover; left: auto; right: 0;}",
+        "p {max-width: 600px; font-size: 1.8rem !important;}"
+      ],
+      "name": "t:sections.image-with-text.presets.name",
+      "settings": {
+        "image": "shopify://shop_images/f8e343b8-1cf8-4ec4-931c-6481de0e1249.jpg",
+        "height": "large",
+        "desktop_image_width": "medium",
+        "layout": "text_first",
+        "desktop_content_position": "top",
+        "desktop_content_alignment": "left",
+        "content_layout": "no-overlap",
+        "section_color_scheme": "scheme-5",
+        "color_scheme": "scheme-5",
+        "image_behavior": "none",
+        "mobile_content_alignment": "left",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "image_banner_t9cWXi": {
+      "type": "image-banner",
+      "blocks": {
+        "heading_mC4Jhb": {
+          "type": "heading",
+          "disabled": true,
+          "settings": {
+            "heading": "OUR DESIGN DNA",
+            "heading_size": "h1"
+          }
+        },
+        "text_jVqtBG": {
+          "type": "text",
+          "disabled": true,
+          "settings": {
+            "text": "Inspired by Henri Lefebvre's aesthetic philosophy of revolutionizing the everyday, RUDIN embodies a beauty that merges the everyday with the sublime –– fine pieces that nevertheless beckon for a closer look. The House's signature style of sensual, tactile forms and play with shape reflects an enduring desire to invite touch and surprise.",
+            "text_style": "body"
+          }
+        },
+        "buttons_RNAph4": {
+          "type": "buttons",
+          "disabled": true,
+          "settings": {
+            "button_label_1": "Button label",
+            "button_link_1": "",
+            "button_style_secondary_1": false,
+            "button_label_2": "Button label",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_mC4Jhb",
+        "text_jVqtBG",
+        "buttons_RNAph4"
+      ],
+      "name": "t:sections.image-banner.presets.name",
+      "settings": {
+        "image": "shopify://shop_images/a098274b-00d1-44a2-b137-49ace512a13f.jpg",
+        "image_overlay_opacity": 0,
+        "image_height": "small",
+        "desktop_content_position": "middle-center",
+        "show_text_box": false,
+        "desktop_content_alignment": "center",
+        "color_scheme": "scheme-1",
+        "image_behavior": "none",
+        "mobile_content_alignment": "center",
+        "stack_images_on_mobile": true,
+        "show_text_below": true
+      }
+    },
+    "rich_text_3QyNNH": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_NwgtkF": {
+          "type": "heading",
+          "settings": {
+            "heading": "OUR FOUNDER",
+            "heading_size": "h1"
+          }
+        },
+        "image_GTRtFW": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/DTS_Caldo_Daniel_Faro_Photos_ID3950.jpg",
+            "image_position": "center",
+            "max_width": 300
+          }
+        },
+        "text_YNtEab": {
+          "type": "text",
+          "settings": {
+            "text": "<h2>REVIVING THE SUBLIME IN THE EVERYDAY</h2>"
+          }
+        },
+        "text_7EmQYX": {
+          "type": "text",
+          "settings": {
+            "text": "<h3><em>by </em>DIYANAH KAMARUDIN</h3>"
+          }
+        },
+        "text_jRmeiP": {
+          "type": "text",
+          "settings": {
+            "text": "<p>I grew up steeped in the humanities: art, literature, and cinema were my religion. These passions drove me to seek creative and intellectual adventures that shaped my eye for meaning, storytelling, and aesthetics: from studying French New Wave cinema in Paris, seeking out the foremost scholar of Kant in New York, and solo road trips across northern Italy with <em>Dante</em> in hand.<br/><br/>As a sensitive member of the 'Zillennial' generation, I’ve also carried a deep awareness of the urgent need to create beauty responsibly against the backdrop of an increasingly ecologically fragile planet and society alienated by mass production and commodification.</p><p>This fresh fusion of culture, beauty, and ethics is what I set out to bring into the world of fine and luxury jewelry. I founded Rudin guided by a singular creative mantra: revive the sublime in the everyday, with zero compromise on ethics and craftsmanship.</p>"
+          }
+        },
+        "button_8bkHNe": {
+          "type": "button",
+          "disabled": true,
+          "settings": {
+            "button_label": "Button label",
+            "button_link": "",
+            "button_style_secondary": false,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_NwgtkF",
+        "image_GTRtFW",
+        "text_YNtEab",
+        "text_7EmQYX",
+        "text_jRmeiP",
+        "button_8bkHNe"
+      ],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "scheme-4",
+        "full_width": true,
+        "padding_top": 80,
+        "padding_bottom": 80
+      }
+    },
+    "featured_collection_i8BMf4": {
+      "type": "featured-collection",
+      "name": "t:sections.featured-collection.presets.name",
+      "settings": {
+        "title": "Featured collection",
+        "heading_size": "h1",
+        "description": "",
+        "show_description": false,
+        "description_style": "body",
+        "collection": "",
+        "products_to_show": 4,
+        "columns_desktop": 4,
+        "full_width": false,
+        "show_view_all": true,
+        "view_all_style": "solid",
+        "enable_desktop_slider": false,
+        "color_scheme": "",
+        "image_ratio": "adapt",
+        "image_shape": "default",
+        "show_secondary_image": false,
+        "show_vendor": false,
+        "show_rating": false,
+        "quick_add": "none",
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    }
+  },
+  "order": [
+    "main",
+    "rich_text_eEjMDL",
+    "image_with_text_MB7qQT",
+    "image_with_text_Xc9Gtj",
+    "image_banner_t9cWXi",
+    "rich_text_3QyNNH",
+    "featured_collection_i8BMf4"
+  ]
+}

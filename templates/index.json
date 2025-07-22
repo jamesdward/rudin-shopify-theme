@@ -38,7 +38,11 @@
           }
         }
       },
-      "block_order": ["heading", "text", "button"],
+      "block_order": [
+        "heading",
+        "text",
+        "button"
+      ],
       "settings": {
         "image": "shopify://shop_images/amsterdam-city-archives-I5UuPHNQDNs-unsplash.jpg",
         "image_overlay_opacity": 0,
@@ -67,7 +71,9 @@
           }
         }
       },
-      "block_order": ["column_DWy4Cf"],
+      "block_order": [
+        "column_DWy4Cf"
+      ],
       "name": "t:sections.multicolumn.presets.name",
       "settings": {
         "title": "",
@@ -96,18 +102,22 @@
         "heading": {
           "type": "heading",
           "settings": {
-            "heading": "THE WORLD'S<em> most </em>COLLECTIBLE FINE and LUXURY JEWELRY HOUSE",
+            "heading": "WORLD'S<em> most </em>COLLECTIBLE & ETHICAL FINE JEWELRY HOUSE",
             "heading_size": "h1"
           }
         }
       },
-      "block_order": ["heading"],
-      "custom_css": ["h2 {font-stretch: expanded;}"],
+      "block_order": [
+        "heading"
+      ],
+      "custom_css": [
+        "h2 {font-stretch: expanded;}"
+      ],
       "settings": {
         "desktop_content_position": "center",
         "content_alignment": "center",
         "color_scheme": "scheme-1",
-        "full_width": false,
+        "full_width": true,
         "padding_top": 28,
         "padding_bottom": 0
       }
@@ -136,7 +146,10 @@
           }
         }
       },
-      "block_order": ["column_3fgRnw", "column_pmBRJg"],
+      "block_order": [
+        "column_3fgRnw",
+        "column_pmBRJg"
+      ],
       "settings": {
         "title": "",
         "heading_size": "h1",
@@ -161,7 +174,9 @@
     "featured_collection_mgi8i8": {
       "type": "featured-collection",
       "disabled": true,
-      "custom_css": ["h2 {text-align: center;}"],
+      "custom_css": [
+        "h2 {text-align: center;}"
+      ],
       "settings": {
         "title": "CURATED <em>by </em>our MASTER STORYTELLER",
         "heading_size": "h2",
@@ -196,7 +211,7 @@
           "settings": {
             "image": "shopify://shop_images/1_63b3f004-577d-4343-88f2-efea466bd7ac.svg",
             "title": "HIGH JEWELRY CRAFTSMANSHIP",
-            "text": "<p>Handcrafted in our Valenza, Italy atelier; the cradle of old-world craftsmanship</p>",
+            "text": "<p>Handcrafted via the lost wax casting technique in our Valenza, Italy workshop–the cradle of high jewelry</p>",
             "link_label": "",
             "link": ""
           }
@@ -216,13 +231,17 @@
           "settings": {
             "image": "shopify://shop_images/3_1a3ca772-5caf-4283-9e95-7e9a91aa7dc4.svg",
             "title": "THE BELIEF OF ETHICAL BEAUTY",
-            "text": "<p>Crafted to order creations, using the highest-quality lab-grown diamonds</p>",
+            "text": "<p>Forged with certified recycled Italian gold and  the highest-quality lab-grown diamonds</p>",
             "link_label": "",
             "link": ""
           }
         }
       },
-      "block_order": ["column_gX7jJB", "column_HRwL88", "column_e3pK7X"],
+      "block_order": [
+        "column_gX7jJB",
+        "column_HRwL88",
+        "column_e3pK7X"
+      ],
       "settings": {
         "title": "",
         "heading_size": "h1",
@@ -273,7 +292,11 @@
           }
         }
       },
-      "block_order": ["heading_F7A4MT", "text_BCWydL", "buttons_gjWBHj"],
+      "block_order": [
+        "heading_F7A4MT",
+        "text_BCWydL",
+        "buttons_gjWBHj"
+      ],
       "name": "t:sections.image-banner.presets.name",
       "settings": {
         "image": "shopify://shop_images/a098274b-00d1-44a2-b137-49ace512a13f.jpg",
