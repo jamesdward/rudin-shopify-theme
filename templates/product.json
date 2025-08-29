@@ -55,14 +55,10 @@
             "swatch_shape": "circle"
           }
         },
-        "quantity_selector": {
-          "type": "quantity_selector",
-          "settings": {}
-        },
         "custom_liquid_tDWgJk": {
           "type": "custom_liquid",
           "settings": {
-            "custom_liquid": "{% assign days_to_add = 21 %}\n{% assign seconds_to_add = days_to_add | times: 86400 %}\n{% assign delivery_date = 'now' | date: '%s' | plus: seconds_to_add | date: '%B %-d, %Y' %}\n<p><span style=\"font-style: italic;\">Each item is handcrafted to order in Valenza, Italy by our master artisans. Expected delivery by {{ delivery_date }}.</br><span></p>"
+            "custom_liquid": "{% assign days_to_add = 90 %}\n{% assign seconds_to_add = days_to_add | times: 86400 %}\n{% assign delivery_date = 'now' | date: '%s' | plus: seconds_to_add | date: '%B %-d, %Y' %}\n<p><span style=\"font-style: italic;\">Our exclusive presale runs from September 1-30 2025. Purchase today for an expected delivery date by {{ delivery_date }}.</br><span></p>"
           }
         },
         "buy_buttons": {
@@ -70,6 +66,12 @@
           "settings": {
             "show_dynamic_checkout": false,
             "show_gift_card_recipient": true
+          }
+        },
+        "custom_liquid_Ck4caY": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "<a role=\"link\" aria-disabled=\"true\" class=\"button button--secondary\" style=\"width:100%; margin-top: -50px;\">\n                      Questions? WhatsApp Us\n                    </a>"
           }
         },
         "text_YAG8kt": {
@@ -91,30 +93,37 @@
           "name": "LIMITED EDITION OF 200 PIECES",
           "settings": {}
         },
+        "text_rE8pzE": {
+          "type": "text",
+          "settings": {
+            "text": "<a href=\"#product-story\" title=\"#product-story\">🔎 The Story Behind This Piece</a>",
+            "text_style": "body"
+          }
+        },
         "collapsible-row-1": {
           "type": "collapsible_tab",
           "settings": {
-            "heading": "DETAILS & CARE",
+            "heading": "CURATOR'S NOTES",
             "icon": "none",
-            "content": "<ul><li>Handcrafted in 14k solid gold</li><li>D-E, VVS-VS lab-grown diamonds</li><li>Alpha earring backs, true to artisanal craftsmanship standards</li></ul>",
+            "content": "<p>{{ product.metafields.custom.curator_s_notes | metafield_tag }}</p>",
             "page": ""
           }
         },
         "collapsible_tab_YmgTBK": {
           "type": "collapsible_tab",
           "settings": {
-            "heading": "FREE SHIPPING WORLDWIDE",
+            "heading": "DETAILS & CARE",
             "icon": "none",
-            "content": "<p>Rudin is pleased to offer free shipping worldwide on any item purchased.</p>",
+            "content": "{{ product.metafields.custom.details_and_care | metafield_tag }}",
             "page": ""
           }
         },
         "collapsible-row-2": {
           "type": "collapsible_tab",
           "settings": {
-            "heading": "6 MONTH WARRANTY",
+            "heading": "SHIPPING & RETURNS",
             "icon": "none",
-            "content": "<p>Rudin is pleased to offer <strong>one complimentary repair</strong> within six months for any manufacturing defects. Please note: normal variations including normal wear and tear, improper care, storage techniques or third-party modifications do not fall under our warranty.</p>",
+            "content": "<p>Rudin is pleased to offer complimentary insured shipping to the EU, UAE, UK, USA and Singapore on any creation purchased. Nevertheless if you are residing outside these regions please email us at care@rudinjewels.com and we would be happy to serve you. <br/><br/>We also guarantee returns or exchanges<strong> </strong>within 30 days from the delivery date. Please note that rings can only be exchanged for resizing once, whereas engraved or damaged creations are not eligible for exchanges nor returns. If you have any questions please email us at care@rudinjewels.com.</p>",
             "page": ""
           }
         }
@@ -127,12 +136,13 @@
         "custom_liquid_PQjepC",
         "custom_liquid_kiRNNU",
         "variant_picker",
-        "quantity_selector",
         "custom_liquid_tDWgJk",
         "buy_buttons",
+        "custom_liquid_Ck4caY",
         "text_YAG8kt",
         "custom_liquid_QB9PWD",
         "description",
+        "text_rE8pzE",
         "collapsible-row-1",
         "collapsible_tab_YmgTBK",
         "collapsible-row-2"
@@ -177,10 +187,10 @@
         "image-with-text-1"
       ],
       "settings": {
+        "section_id": "product-story",
         "image": "{{ product.metafields.custom.image_character_story.value }}",
-        "image_metafield_key": "image_character_story",
-        "height": "medium",
-        "desktop_image_width": "small",
+        "height": "adapt",
+        "desktop_image_width": "medium",
         "layout": "image_first",
         "desktop_content_position": "top",
         "desktop_content_alignment": "left",
@@ -203,7 +213,8 @@
             "title": "HIGH JEWELRY CRAFTSMANSHIP",
             "text": "<p>Handcrafted in a family-run atelier in Valenza, Italy––the cradle of high jewelry––via the ancient lost-wax casting process</p>",
             "link_label": "",
-            "link": ""
+            "link": "",
+            "link_label_heading_style": false
           }
         },
         "column_nPgTVz": {
@@ -213,7 +224,8 @@
             "title": "BEAUTY IS SUSTAINABILITY",
             "text": "<p>Made to order pieces in solid 14k gold and carbon-neutral lab grown diamonds, accompanied with limited edition artwork</p>",
             "link_label": "",
-            "link": ""
+            "link": "",
+            "link_label_heading_style": false
           }
         },
         "column_iFybdL": {
@@ -223,7 +235,8 @@
             "title": "FREE DELIVERY & RETURNS",
             "text": "<p>Complimentary insured shipping and returns on all orders worldwide</p>",
             "link_label": "",
-            "link": ""
+            "link": "",
+            "link_label_heading_style": false
           }
         }
       },
@@ -278,9 +291,9 @@
         "text_CjbHcz"
       ],
       "settings": {
+        "section_id": "",
         "image": "{{ product.metafields.custom.image_character.value }}",
-        "image_metafield_key": "image_character",
-        "height": "medium",
+        "height": "adapt",
         "desktop_image_width": "medium",
         "layout": "text_first",
         "desktop_content_position": "top",
@@ -318,10 +331,10 @@
         "text_Chr96J"
       ],
       "settings": {
+        "section_id": "",
         "image": "{{ product.metafields.custom.image_artwork.value }}",
-        "image_metafield_key": "image_artwork",
-        "height": "medium",
-        "desktop_image_width": "medium",
+        "height": "adapt",
+        "desktop_image_width": "small",
         "layout": "image_first",
         "desktop_content_position": "top",
         "desktop_content_alignment": "left",
@@ -334,8 +347,38 @@
         "padding_bottom": 36
       }
     },
+    "featured_collection_XbKybp": {
+      "type": "featured-collection",
+      "name": "t:sections.featured-collection.presets.name",
+      "settings": {
+        "title": "More from the collection",
+        "heading_size": "h2",
+        "description": "",
+        "show_description": false,
+        "description_style": "body",
+        "collection": "empyrean",
+        "products_to_show": 9,
+        "columns_desktop": 4,
+        "full_width": true,
+        "show_view_all": true,
+        "view_all_style": "solid",
+        "enable_desktop_slider": true,
+        "color_scheme": "",
+        "image_ratio": "portrait",
+        "image_shape": "default",
+        "show_secondary_image": false,
+        "show_vendor": false,
+        "show_rating": false,
+        "quick_add": "none",
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
     "related-products": {
       "type": "related-products",
+      "disabled": true,
       "settings": {
         "heading": "You may also like",
         "heading_size": "h2",
@@ -359,6 +402,7 @@
     "multicolumn_QbYhaW",
     "image_with_text_cHcV7x",
     "image_with_text_UfDXqb",
+    "featured_collection_XbKybp",
     "related-products"
   ]
 }

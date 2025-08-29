@@ -15,14 +15,14 @@
         "heading": {
           "type": "heading",
           "settings": {
-            "heading": "EMPYREAN",
-            "heading_size": "hxl"
+            "heading": "EMPYREAN: VOLUME I",
+            "heading_size": "h0"
           }
         },
         "text": {
           "type": "text",
           "settings": {
-            "text": "Jewels inspired by 16th century Italian fresco paintings",
+            "text": "Journey through Volume I of our limited edition fine jewelry collection, inspired by 16th century Italian fresco paintings, as Virgil does with Dante.",
             "text_style": "body"
           }
         },
@@ -31,21 +31,26 @@
           "settings": {
             "button_label_1": "EXPLORE",
             "button_link_1": "shopify://collections/all",
-            "button_style_secondary_1": false,
+            "button_style_secondary_1": true,
             "button_label_2": "",
             "button_link_2": "",
             "button_style_secondary_2": false
           }
         }
       },
-      "block_order": ["heading", "text", "button"],
+      "block_order": [
+        "heading",
+        "text",
+        "button"
+      ],
       "settings": {
+        "banner_url": "shopify://collections/empyrean",
         "image": "shopify://shop_images/amsterdam-city-archives-I5UuPHNQDNs-unsplash.jpg",
-        "image_overlay_opacity": 0,
+        "image_overlay_opacity": 50,
         "image_height": "large",
-        "desktop_content_position": "bottom-left",
+        "desktop_content_position": "bottom-center",
         "show_text_box": false,
-        "desktop_content_alignment": "left",
+        "desktop_content_alignment": "center",
         "color_scheme": "scheme-3",
         "image_behavior": "none",
         "mobile_content_alignment": "center",
@@ -63,11 +68,14 @@
             "title": "",
             "text": "",
             "link_label": "",
-            "link": ""
+            "link": "",
+            "link_label_heading_style": false
           }
         }
       },
-      "block_order": ["column_DWy4Cf"],
+      "block_order": [
+        "column_DWy4Cf"
+      ],
       "name": "t:sections.multicolumn.presets.name",
       "settings": {
         "title": "",
@@ -96,18 +104,22 @@
         "heading": {
           "type": "heading",
           "settings": {
-            "heading": "THE WORLD'S<em> most </em>COLLECTIBLE FINE and LUXURY JEWELRY HOUSE",
+            "heading": "the WORLD'S<em> first </em>LIMITED EDITION FINE JEWELRY HOUSE",
             "heading_size": "h1"
           }
         }
       },
-      "block_order": ["heading"],
-      "custom_css": ["h2 {font-stretch: expanded;}"],
+      "block_order": [
+        "heading"
+      ],
+      "custom_css": [
+        "h2 {font-stretch: expanded;}"
+      ],
       "settings": {
         "desktop_content_position": "center",
         "content_alignment": "center",
         "color_scheme": "scheme-1",
-        "full_width": false,
+        "full_width": true,
         "padding_top": 28,
         "padding_bottom": 0
       }
@@ -122,7 +134,8 @@
             "title": "",
             "text": "<p><em>Limited Edition</em></p>",
             "link_label": "THREE GRACES RING",
-            "link": "shopify://products/threegraces-ring"
+            "link": "shopify://products/threegraces-ring",
+            "link_label_heading_style": true
           }
         },
         "column_pmBRJg": {
@@ -132,14 +145,18 @@
             "title": "",
             "text": "<p><em>Limited Edition</em></p>",
             "link_label": "GIGANTE EARRINGS",
-            "link": "shopify://products/gigante-semi-pave-diamond-hoop-earrings"
+            "link": "shopify://products/gigante-semi-pave-diamond-hoop-earrings",
+            "link_label_heading_style": true
           }
         }
       },
-      "block_order": ["column_3fgRnw", "column_pmBRJg"],
+      "block_order": [
+        "column_3fgRnw",
+        "column_pmBRJg"
+      ],
       "settings": {
         "title": "",
-        "heading_size": "h1",
+        "heading_size": "h0",
         "image_width": "full",
         "custom_image_width": 500,
         "image_ratio": "square",
@@ -161,7 +178,9 @@
     "featured_collection_mgi8i8": {
       "type": "featured-collection",
       "disabled": true,
-      "custom_css": ["h2 {text-align: center;}"],
+      "custom_css": [
+        "h2 {text-align: center;}"
+      ],
       "settings": {
         "title": "CURATED <em>by </em>our MASTER STORYTELLER",
         "heading_size": "h2",
@@ -195,34 +214,41 @@
           "type": "column",
           "settings": {
             "image": "shopify://shop_images/1_63b3f004-577d-4343-88f2-efea466bd7ac.svg",
-            "title": "HIGH JEWELRY CRAFTSMANSHIP",
-            "text": "<p>Handcrafted in our Valenza, Italy atelier; the cradle of old-world craftsmanship</p>",
+            "title": "OUR HIGH JEWELRY CRAFTSMANSHIP",
+            "text": "<p>One-of-a-kind creations handcrafted via <em>cera persa </em>artisanship in our Italy atelier.</p>",
             "link_label": "",
-            "link": ""
+            "link": "https://rudinjewels.com",
+            "link_label_heading_style": false
           }
         },
         "column_HRwL88": {
           "type": "column",
           "settings": {
-            "image": "shopify://shop_images/2_597a656a-6a23-441a-9319-f85e09b11acf.svg",
-            "title": "RAREFIED & EXCLUSIVE DESIGNS",
-            "text": "<p>Limited edition collections cement each RUDIN piece as a future heirloom</p>",
+            "image": "shopify://shop_images/peacock.svg",
+            "title": "OUR CULTURALLY INSPIRED HEIRLOOMS",
+            "text": "<p>Limited edition collections with a unique design story, influenced by art, culture and cinema.</p>",
             "link_label": "",
-            "link": ""
+            "link": "",
+            "link_label_heading_style": false
           }
         },
         "column_e3pK7X": {
           "type": "column",
           "settings": {
             "image": "shopify://shop_images/3_1a3ca772-5caf-4283-9e95-7e9a91aa7dc4.svg",
-            "title": "THE BELIEF OF ETHICAL BEAUTY",
-            "text": "<p>Crafted to order creations, using the highest-quality lab-grown diamonds</p>",
+            "title": "OUR BELIEF IN CONSCIOUS BEAUTY",
+            "text": "<p>Impeccably sculpted in Italian gold (100%  recycled) and top-grade cultured diamonds.</p>",
             "link_label": "",
-            "link": ""
+            "link": "",
+            "link_label_heading_style": false
           }
         }
       },
-      "block_order": ["column_gX7jJB", "column_HRwL88", "column_e3pK7X"],
+      "block_order": [
+        "column_gX7jJB",
+        "column_HRwL88",
+        "column_e3pK7X"
+      ],
       "settings": {
         "title": "",
         "heading_size": "h1",
@@ -240,53 +266,57 @@
         "padding_top": 12,
         "padding_bottom": 12,
         "card_style": false,
-        "enable_column_max_width": false,
-        "column_max_width": 400
+        "enable_column_max_width": true,
+        "column_max_width": 300
       }
     },
-    "image_banner_bM6FTn": {
-      "type": "image-banner",
+    "image_with_text_tkcyQV": {
+      "type": "image-with-text",
       "blocks": {
-        "heading_F7A4MT": {
+        "heading_KH7GJH": {
           "type": "heading",
           "settings": {
-            "heading": "<em>Poetic </em>SCHOLARSHIP",
+            "heading": "Journal",
             "heading_size": "h1"
           }
         },
-        "text_BCWydL": {
+        "text_mbUAKd": {
           "type": "text",
           "settings": {
-            "text": "In a world gravitating towards the slow annihilation of original creativity, our firm exhortation to create handcrafted, collectible objects steeped in tender, rich storytelling",
-            "text_style": "body"
+            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
+            "text_style": "body",
+            "metafield_key": "none"
           }
         },
-        "buttons_gjWBHj": {
-          "type": "buttons",
+        "button_xBaFtF": {
+          "type": "button",
           "settings": {
-            "button_label_1": "OUR STORY",
-            "button_link_1": "shopify://pages/our-story",
-            "button_style_secondary_1": false,
-            "button_label_2": "",
-            "button_link_2": "",
-            "button_style_secondary_2": false
+            "button_label": "READ MORE",
+            "button_link": "",
+            "button_style_secondary": true
           }
         }
       },
-      "block_order": ["heading_F7A4MT", "text_BCWydL", "buttons_gjWBHj"],
-      "name": "t:sections.image-banner.presets.name",
+      "block_order": [
+        "heading_KH7GJH",
+        "text_mbUAKd",
+        "button_xBaFtF"
+      ],
+      "name": "t:sections.image-with-text.presets.name",
       "settings": {
-        "image": "shopify://shop_images/a098274b-00d1-44a2-b137-49ace512a13f.jpg",
-        "image_overlay_opacity": 0,
-        "image_height": "small",
-        "desktop_content_position": "middle-center",
-        "show_text_box": false,
-        "desktop_content_alignment": "center",
-        "color_scheme": "scheme-4",
+        "section_id": "",
+        "height": "large",
+        "desktop_image_width": "large",
+        "layout": "text_first",
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "left",
+        "content_layout": "no-overlap",
+        "section_color_scheme": "",
+        "color_scheme": "",
         "image_behavior": "none",
-        "mobile_content_alignment": "center",
-        "stack_images_on_mobile": true,
-        "show_text_below": true
+        "mobile_content_alignment": "left",
+        "padding_top": 36,
+        "padding_bottom": 36
       }
     }
   },
@@ -297,6 +327,6 @@
     "multicolumn_jDKNRL",
     "featured_collection_mgi8i8",
     "multicolumn_AW4Yeq",
-    "image_banner_bM6FTn"
+    "image_with_text_tkcyQV"
   ]
 }

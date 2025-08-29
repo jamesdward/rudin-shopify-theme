@@ -51,6 +51,9 @@
   word-break: break-word;
   overflow-x: auto;
   padding: 0 0.6rem;
+  li {
+    list-style: disc;
+  }
 }
 
 .accordion__content img {

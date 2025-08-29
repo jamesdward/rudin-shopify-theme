@@ -402,6 +402,7 @@
   z-index: 1;
   width: 100%;
   height: 100%;
+  pointer-events: none;
 }
 
 .banner__box > * + .banner__text {
@@ -502,4 +503,34 @@
 
 .banner--full {
   height: calc(100vh - 160px);
+}
+
+/* Clickable banner styles */
+.banner--clickable {
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  position: relative;
+}
+
+.banner--clickable:hover {
+  transform: translateY(-2px);
+}
+
+/* Ensure buttons inside clickable banners don't interfere with the banner link */
+.banner--clickable .banner__buttons a {
+  position: relative;
+  z-index: 3;
+}
+
+/* Prevent text selection on clickable banners for better UX */
+.banner--clickable {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Fix for ::after pseudo-element blocking clicks on clickable banners */
+.banner--clickable::after {
+  pointer-events: none;
 }

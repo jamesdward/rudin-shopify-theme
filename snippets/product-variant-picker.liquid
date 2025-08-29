@@ -50,7 +50,7 @@
             {% comment %} {% assign engraving_flag = product.metafields.custom.show_engraving_price | strip | downcase %} {% endcomment %}
             {% comment %} Need a safer way of checking if its engraved other than option.name {% endcomment %}
             {% if forloop.last %}
-              <span id='engraving-price-placeholder' data-price-usd='100'></span>
+              <span id='engraving-price-placeholder' data-price-usd='50'></span>
             {% endif %}
           </legend>
           {% render 'product-variant-options',
@@ -152,9 +152,11 @@
       }
 
       function handleChange() {
+        console.log("handle change");
         const variantId = getSelectedVariantId();
-        const engravingMetafield = isEngravingMetafieldTrue(variantId);
+        const engravingMetafield = isEngravingMetafieldTrue(parseInt(variantId));
 
+        console.log(engravingMetafield, variantId);
         // Show engraving box only if metafield is "true"
         engravingContainer.style.display = engravingMetafield ? 'flex' : 'none';
         engravingTextInput.disabled = !engravingMetafield;

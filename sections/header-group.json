@@ -11,20 +11,21 @@
   "name": "t:sections.header.name",
   "type": "header",
   "sections": {
-    "announcement_bar_iNM6DG": {
+    "announcement_bar_mTYcN7": {
       "type": "announcement-bar",
       "blocks": {
-        "announcement_WwLnWJ": {
+        "announcement_JrpFb6": {
           "type": "announcement",
           "settings": {
-            "text": "Welcome to our store",
-            "link": ""
+            "text": "Virtual Viewings & Bespoke Creations",
+            "link": "https://calendly.com/diyanah-rudinjewels/apt"
           }
         }
       },
       "block_order": [
-        "announcement_WwLnWJ"
+        "announcement_JrpFb6"
       ],
+      "name": "t:sections.announcement-bar.presets.name",
       "settings": {
         "color_scheme": "",
         "show_line_separator": true,
@@ -43,7 +44,7 @@
         "logo_width": 100,
         "logo_position": "middle-center",
         "menu": "main-menu",
-        "secondary_menu": "secondary-menu",
+        "secondary_menu": "right-menu",
         "menu_type_desktop": "dropdown",
         "sticky_header_type": "on-scroll-up",
         "show_line_separator": false,
@@ -60,7 +61,7 @@
     }
   },
   "order": [
-    "announcement_bar_iNM6DG",
+    "announcement_bar_mTYcN7",
     "header"
   ]
 }

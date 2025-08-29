@@ -139,6 +139,27 @@
       }
     },
     "content_for_index": [],
+    "blocks": {
+      "15683396631634586217": {
+        "type": "shopify://apps/inbox/blocks/chat/841fc607-4181-4ad1-842d-e24d7f8bad6b",
+        "disabled": false,
+        "settings": {
+          "button_color": "#000000",
+          "secondary_color": "#ffffff",
+          "ternary_color": "#6a6a6a",
+          "button_icon": "chat_bubble",
+          "button_text": "chat_with_us",
+          "button_horizontal_position": "bottom_right",
+          "button_vertical_position": "lowest",
+          "greeting_message": "Our Client Care Team is available Monday to Sunday to assist you with a 2 hour response guarantee. We strive to address your concerns with respect, compassion and honesty. Please enter the details of your inquiry below."
+        }
+      },
+      "3069267935920067734": {
+        "type": "shopify://apps/font-pro/blocks/fontpro/02ee9aa9-fd97-46a6-9367-b4362eb189a9",
+        "disabled": false,
+        "settings": {}
+      }
+    },
     "color_schemes": {
       "scheme-1": {
         "settings": {
